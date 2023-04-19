@@ -1,0 +1,1820 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>EntityFramework.SqlServer</name>
+    </assembly>
+    <members>
+        <member name="T:System.Data.Entity.SqlServer.SqlAzureExecutionStrategy">
+            <summary>
+            An <see cref="T:System.Data.Entity.Infrastructure.IDbExecutionStrategy"/> that retries actions that throw exceptions caused by SQL Azure transient failures.
+            </summary>
+            <remarks>
+            This execution strategy will retry the operation on <see cref="T:System.TimeoutException"/> and <see cref="T:System.Data.SqlClient.SqlException"/>
+            if the <see cref="P:System.Data.SqlClient.SqlException.Errors"/> contains any of the following error numbers:
+            40613, 40501, 40197, 10929, 10928, 10060, 10054, 10053, 233, 64 and 20
+            </remarks>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlAzureExecutionStrategy.#ctor">
+            <summary>
+            Creates a new instance of <see cref="T:System.Data.Entity.SqlServer.SqlAzureExecutionStrategy" />.
+            </summary>
+            <remarks>
+            The default retry limit is 5, which means that the total amount of time spent between retries is 26 seconds plus the random factor.
+            </remarks>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlAzureExecutionStrategy.#ctor(System.Int32,System.TimeSpan)">
+            <summary>
+            Creates a new instance of <see cref="T:System.Data.Entity.SqlServer.SqlAzureExecutionStrategy" /> with the specified limits for
+            number of retries and the delay between retries.
+            </summary>
+            <param name="maxRetryCount"> The maximum number of retry attempts. </param>
+            <param name="maxDelay"> The maximum delay in milliseconds between retries. </param>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlAzureExecutionStrategy.ShouldRetryOn(System.Exception)">
+            <inheritdoc/>
+        </member>
+        <member name="T:System.Data.Entity.SqlServer.SqlFunctions">
+            <summary>
+            Contains function stubs that expose SqlServer methods in Linq to Entities.
+            </summary>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlFunctions.ChecksumAggregate(System.Collections.Generic.IEnumerable{System.Int32})">
+            <summary>Returns the checksum of the values in a collection. Null values are ignored.</summary>
+            <returns>The checksum computed from the input collection.</returns>
+            <param name="arg">The collection of values over which the checksum is computed.</param>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlFunctions.ChecksumAggregate(System.Collections.Generic.IEnumerable{System.Nullable{System.Int32}})">
+            <summary>Returns the checksum of the values in a collection. Null values are ignored.</summary>
+            <returns>The checksum computed from the input collection.</returns>
+            <param name="arg">The collection of values over which the checksum is computed.</param>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlFunctions.Ascii(System.String)">
+            <summary>Returns the ASCII code value of the left-most character of a character expression.</summary>
+            <returns>The ASCII code of the first character in the input string.</returns>
+            <param name="arg">A valid string.</param>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlFunctions.Char(System.Nullable{System.Int32})">
+            <summary>Returns the character that corresponds to the specified integer ASCII value.</summary>
+            <returns>The character that corresponds to the specified ASCII value.</returns>
+            <param name="arg">An ASCII code.</param>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlFunctions.CharIndex(System.String,System.String)">
+            <summary>Returns the starting position of one expression found within another expression.</summary>
+            <returns>The starting position of  toFind  if it is found in  toSearch .</returns>
+            <param name="toFind">The string expression to be found.</param>
+            <param name="toSearch">The string expression to be searched.</param>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlFunctions.CharIndex(System.Byte[],System.Byte[])">
+            <summary>Returns the starting position of one expression found within another expression.</summary>
+            <returns>The starting position of  toFind  if it is found in  toSearch .</returns>
+            <param name="toFind">The string expression to be found.</param>
+            <param name="toSearch">The string expression to be searched.</param>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlFunctions.CharIndex(System.String,System.String,System.Nullable{System.Int32})">
+            <summary>Returns the starting position of one expression found within another expression.</summary>
+            <returns>The starting position of  toFind  if it is found in  toSearch .</returns>
+            <param name="toFind">The string expression to be found.</param>
+            <param name="toSearch">The string expression to be searched.</param>
+            <param name="startLocation">The character position in  toSearch  where searching begins.</param>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlFunctions.CharIndex(System.Byte[],System.Byte[],System.Nullable{System.Int32})">
+            <summary>Returns the starting position of one expression found within another expression.</summary>
+            <returns>The starting position of  toFind  if it is found in  toSearch .</returns>
+            <param name="toFind">The string expression to be found.</param>
+            <param name="toSearch">The string expression to be searched.</param>
+            <param name="startLocation">The character position in  toSearch  where searching begins.</param>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlFunctions.CharIndex(System.String,System.String,System.Nullable{System.Int64})">
+            <summary>Returns the starting position of one expression found within another expression.</summary>
+            <returns>
+            A <see cref="T:System.Nullable`1" /> of <see cref="T:System.Int64" /> value that is the starting position of  toFind  if it is found in  toSearch .
+            </returns>
+            <param name="toFind">The string expression to be found.</param>
+            <param name="toSearch">The string expression to be searched.</param>
+            <param name="startLocation">The character position in  toSearch  where searching begins.</param>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlFunctions.CharIndex(System.Byte[],System.Byte[],System.Nullable{System.Int64})">
+            <summary>Returns the starting position of one expression found within another expression.</summary>
+            <returns>The starting position of  toFind  if it is found in  toSearch .</returns>
+            <param name="toFind">The string expression to be found.</param>
+            <param name="toSearch">The string expression to be searched.</param>
+            <param name="startLocation">The character position in  toSearch  where searching begins.</param>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlFunctions.Difference(System.String,System.String)">
+            <summary>Returns an integer value that indicates the difference between the SOUNDEX values of two character expressions.</summary>
+            <returns>The SOUNDEX difference between the two strings.</returns>
+            <param name="string1">The first string.</param>
+            <param name="string2">The second string.</param>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlFunctions.NChar(System.Nullable{System.Int32})">
+            <summary>Returns the Unicode character with the specified integer code, as defined by the Unicode standard.</summary>
+            <returns>The character that corresponds to the input character code.</returns>
+            <param name="arg">A character code.</param>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlFunctions.PatIndex(System.String,System.String)">
+            <summary>Returns the starting position of the first occurrence of a pattern in a specified expression, or zeros if the pattern is not found, on all valid text and character data types.</summary>
+            <returns>The starting character position where the string pattern was found.</returns>
+            <param name="stringPattern">A string pattern to search for.</param>
+            <param name="target">The string to search.</param>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlFunctions.QuoteName(System.String)">
+            <summary>Returns a Unicode string with the delimiters added to make the input string a valid Microsoft SQL Server delimited identifier.</summary>
+            <returns>The original string with brackets added.</returns>
+            <param name="stringArg">The expression that quote characters will be added to.</param>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlFunctions.QuoteName(System.String,System.String)">
+            <summary>Returns a Unicode string with the delimiters added to make the input string a valid Microsoft SQL Server delimited identifier.</summary>
+            <returns>The original string with the specified quote characters added.</returns>
+            <param name="stringArg">The expression that quote characters will be added to.</param>
+            <param name="quoteCharacter">The one-character string to use as the delimiter. It can be a single quotation mark ( ' ), a left or right bracket ( [ ] ), or a double quotation mark ( " ). If quote_character is not specified, brackets are used.</param>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlFunctions.Replicate(System.String,System.Nullable{System.Int32})">
+            <summary>Repeats a string value a specified number of times.</summary>
+            <returns>The target string, repeated the number of times specified by  count .</returns>
+            <param name="target">A valid string.</param>
+            <param name="count">The value that specifies how many time to repeat  target .</param>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlFunctions.SoundCode(System.String)">
+            <summary>Converts an alphanumeric string to a four-character (SOUNDEX) code to find similar-sounding words or names.</summary>
+            <returns>The SOUNDEX code of the input string.</returns>
+            <param name="arg">A valid string.</param>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlFunctions.Space(System.Nullable{System.Int32})">
+            <summary>Returns a string of repeated spaces.</summary>
+            <returns>A string that consists of the specified number of spaces.</returns>
+            <param name="arg1">The number of spaces. If negative, a null string is returned.</param>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlFunctions.StringConvert(System.Nullable{System.Double})">
+            <summary>Returns character data converted from numeric data.</summary>
+            <returns>The numeric input expression converted to a string.</returns>
+            <param name="number">A numeric expression.</param>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlFunctions.StringConvert(System.Nullable{System.Decimal})">
+            <summary>Returns character data converted from numeric data.</summary>
+            <returns>The input expression converted to a string.</returns>
+            <param name="number">A numeric expression.</param>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlFunctions.StringConvert(System.Nullable{System.Double},System.Nullable{System.Int32})">
+            <summary>Returns character data converted from numeric data.</summary>
+            <returns>The numeric input expression converted to a string.</returns>
+            <param name="number">A numeric expression.</param>
+            <param name="length">The total length of the string. This includes decimal point, sign, digits, and spaces. The default is 10.</param>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlFunctions.StringConvert(System.Nullable{System.Decimal},System.Nullable{System.Int32})">
+            <summary>Returns character data converted from numeric data.</summary>
+            <returns>The input expression converted to a string.</returns>
+            <param name="number">A numeric expression.</param>
+            <param name="length">The total length of the string. This includes decimal point, sign, digits, and spaces. The default is 10.</param>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlFunctions.StringConvert(System.Nullable{System.Double},System.Nullable{System.Int32},System.Nullable{System.Int32})">
+            <summary>Returns character data converted from numeric data.</summary>
+            <returns>The numeric input expression converted to a string.</returns>
+            <param name="number">A numeric expression.</param>
+            <param name="length">The total length of the string. This includes decimal point, sign, digits, and spaces. The default is 10.</param>
+            <param name="decimalArg">The number of places to the right of the decimal point.  decimal  must be less than or equal to 16. If  decimal  is more than 16 then the result is truncated to sixteen places to the right of the decimal point.</param>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlFunctions.StringConvert(System.Nullable{System.Decimal},System.Nullable{System.Int32},System.Nullable{System.Int32})">
+            <summary>Returns character data converted from numeric data.</summary>
+            <returns>The input expression converted to a string.</returns>
+            <param name="number">A numeric expression.</param>
+            <param name="length">The total length of the string. This includes decimal point, sign, digits, and spaces. The default is 10.</param>
+            <param name="decimalArg">The number of places to the right of the decimal point.  decimal  must be less than or equal to 16. If  decimal  is more than 16 then the result is truncated to sixteen places to the right of the decimal point.</param>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlFunctions.Stuff(System.String,System.Nullable{System.Int32},System.Nullable{System.Int32},System.String)">
+            <summary>Inserts a string into another string. It deletes a specified length of characters in the target string at the start position and then inserts the second string into the target string at the start position.</summary>
+            <returns>A string consisting of the two strings.</returns>
+            <param name="stringInput">The target string.</param>
+            <param name="start">The character position in  stringinput  where the replacement string is to be inserted.</param>
+            <param name="length">The number of characters to delete from  stringInput . If  length  is longer than  stringInput , deletion occurs up to the last character in  stringReplacement .</param>
+            <param name="stringReplacement">The substring to be inserted into  stringInput .</param>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlFunctions.Unicode(System.String)">
+            <summary>Returns the integer value, as defined by the Unicode standard, for the first character of the input expression.</summary>
+            <returns>The character code for the first character in the input string.</returns>
+            <param name="arg">A valid string.</param>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlFunctions.Acos(System.Nullable{System.Double})">
+            <summary>A mathematical function that returns the angle, in radians, whose cosine is the specified numerical value. This angle is called the arccosine.</summary>
+            <returns>The angle, in radians, defined by the input cosine value.</returns>
+            <param name="arg1">The cosine of an angle.</param>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlFunctions.Acos(System.Nullable{System.Decimal})">
+            <summary>A mathematical function that returns the angle, in radians, whose cosine is the specified numerical value. This angle is called the arccosine.</summary>
+            <returns>An angle, measured in radians.</returns>
+            <param name="arg1">The cosine of an angle.</param>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlFunctions.Asin(System.Nullable{System.Double})">
+            <summary>A mathematical function that returns the angle, in radians, whose sine is the specified numerical value. This angle is called the arcsine.</summary>
+            <returns>An angle, measured in radians.</returns>
+            <param name="arg">The sine of an angle.</param>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlFunctions.Asin(System.Nullable{System.Decimal})">
+            <summary>A mathematical function that returns the angle, in radians, whose sine is the specified numerical value. This angle is called the arcsine.</summary>
+            <returns>An angle, measured in radians.</returns>
+            <param name="arg">The sine of an angle.</param>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlFunctions.Atan(System.Nullable{System.Double})">
+            <summary>A mathematical function that returns the angle, in radians, whose tangent is the specified numerical value. This angle is called the arctangent.</summary>
+            <returns>An angle, measured in radians.</returns>
+            <param name="arg">The tangent of an angle.</param>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlFunctions.Atan(System.Nullable{System.Decimal})">
+            <summary>A mathematical function that returns the angle, in radians, whose tangent is the specified numerical value. This angle is called the arctangent.</summary>
+            <returns>An angle, measured in radians.</returns>
+            <param name="arg">The tangent of an angle.</param>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlFunctions.Atan2(System.Nullable{System.Double},System.Nullable{System.Double})">
+            <summary>Returns the positive angle, in radians, between the positive x-axis and the ray from the origin through the point (x, y), where x and y are the two specified numerical values. The first parameter passed to the function is the y-value and the second parameter is the x-value.</summary>
+            <returns>An angle, measured in radians.</returns>
+            <param name="arg1">The y-coordinate of a point.</param>
+            <param name="arg2">The x-coordinate of a point.</param>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlFunctions.Atan2(System.Nullable{System.Decimal},System.Nullable{System.Decimal})">
+            <summary>Returns the positive angle, in radians, between the positive x-axis and the ray from the origin through the point (x, y), where x and y are the two specified numerical values. The first parameter passed to the function is the y-value and the second parameter is the x-value.</summary>
+            <returns>An angle, measured in radians.</returns>
+            <param name="arg1">The y-coordinate of a point.</param>
+            <param name="arg2">The x-coordinate of a point.</param>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlFunctions.Cos(System.Nullable{System.Double})">
+            <summary>Returns the trigonometric cosine of the specified angle, in radians, in the specified expression.</summary>
+            <returns>The trigonometric cosine of the specified angle.</returns>
+            <param name="arg">An angle, measured in radians.</param>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlFunctions.Cos(System.Nullable{System.Decimal})">
+            <summary>Returns the trigonometric cosine of the specified angle, in radians, in the specified expression.</summary>
+            <returns>The trigonometric cosine of the specified angle.</returns>
+            <param name="arg">An angle, measured in radians.</param>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlFunctions.Cot(System.Nullable{System.Double})">
+            <summary>A mathematical function that returns the trigonometric cotangent of the specified angle, in radians.</summary>
+            <returns>The trigonometric cotangent of the specified angle.</returns>
+            <param name="arg">An angle, measured in radians.</param>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlFunctions.Cot(System.Nullable{System.Decimal})">
+            <summary>A mathematical function that returns the trigonometric cotangent of the specified angle, in radians.</summary>
+            <returns>The trigonometric cotangent of the specified angle.</returns>
+            <param name="arg">An angle, measured in radians.</param>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlFunctions.Degrees(System.Nullable{System.Int32})">
+            <summary>Returns the corresponding angle in degrees for an angle specified in radians.</summary>
+            <returns>The specified angle converted to degrees.</returns>
+            <param name="arg1">An angle, measured in radians.</param>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlFunctions.Degrees(System.Nullable{System.Int64})">
+            <summary>Returns the corresponding angle in degrees for an angle specified in radians.</summary>
+            <returns>The specified angle converted to degrees.</returns>
+            <param name="arg1">An angle, measured in radians.</param>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlFunctions.Degrees(System.Nullable{System.Decimal})">
+            <summary>Returns the corresponding angle in degrees for an angle specified in radians.</summary>
+            <returns>The specified angle converted to degrees.</returns>
+            <param name="arg1">An angle, measured in radians.</param>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlFunctions.Degrees(System.Nullable{System.Double})">
+            <summary>Returns the corresponding angle in degrees for an angle specified in radians.</summary>
+            <returns>The specified angle converted to degrees.</returns>
+            <param name="arg1">An angle, measured in radians.</param>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlFunctions.Exp(System.Nullable{System.Double})">
+            <summary>Returns the exponential value of the specified float expression.</summary>
+            <returns>The constant e raised to the power of the input value.</returns>
+            <param name="arg">The input value.</param>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlFunctions.Exp(System.Nullable{System.Decimal})">
+            <summary>Returns the exponential value of the specified float expression.</summary>
+            <returns>The constant e raised to the power of the input value.</returns>
+            <param name="arg">The input value.</param>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlFunctions.Log(System.Nullable{System.Double})">
+            <summary>Returns the natural logarithm of the specified input value.</summary>
+            <returns>The natural logarithm of the input value.</returns>
+            <param name="arg">A numeric expression.</param>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlFunctions.Log(System.Nullable{System.Decimal})">
+            <summary>Returns the natural logarithm of the specified input value.</summary>
+            <returns>The natural logarithm of the input value.</returns>
+            <param name="arg">A numeric expression.</param>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlFunctions.Log10(System.Nullable{System.Double})">
+            <summary>Returns the base-10 logarithm of the specified input value.</summary>
+            <returns>The base-10 logarithm of the input value.</returns>
+            <param name="arg">A numeric expression.</param>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlFunctions.Log10(System.Nullable{System.Decimal})">
+            <summary>Returns the base-10 logarithm of the specified input value.</summary>
+            <returns>The base-10 logarithm of the input value.</returns>
+            <param name="arg">A numeric expression.</param>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlFunctions.Pi">
+            <summary>Returns the constant value of pi.</summary>
+            <returns>The numeric value of pi.</returns>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlFunctions.Radians(System.Nullable{System.Int32})">
+            <summary>Returns the radian measure corresponding to the specified angle in degrees.</summary>
+            <returns>The radian measure of the specified angle.</returns>
+            <param name="arg">The angle, measured in degrees</param>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlFunctions.Radians(System.Nullable{System.Int64})">
+            <summary>Returns the radian measure corresponding to the specified angle in degrees.</summary>
+            <returns>The radian measure of the specified angle.</returns>
+            <param name="arg">The angle, measured in degrees</param>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlFunctions.Radians(System.Nullable{System.Decimal})">
+            <summary>Returns the radian measure corresponding to the specified angle in degrees.</summary>
+            <returns>The radian measure of the specified angle.</returns>
+            <param name="arg">The angle, measured in degrees.</param>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlFunctions.Radians(System.Nullable{System.Double})">
+            <summary>Returns the radian measure corresponding to the specified angle in degrees.</summary>
+            <returns>The radian measure of the specified angle.</returns>
+            <param name="arg">The angle, measured in degrees.</param>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlFunctions.Rand">
+            <summary>Returns a pseudo-random float value from 0 through 1, exclusive.</summary>
+            <returns>The pseudo-random value.</returns>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlFunctions.Rand(System.Nullable{System.Int32})">
+            <summary>Returns a pseudo-random float value from 0 through 1, exclusive.</summary>
+            <returns>The pseudo-random value.</returns>
+            <param name="seed">The seed value. If  seed  is not specified, the SQL Server Database Engine assigns a seed value at random. For a specified seed value, the result returned is always the same.</param>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlFunctions.Sign(System.Nullable{System.Int32})">
+            <summary>Returns the positive (+1), zero (0), or negative (-1) sign of the specified expression.</summary>
+            <returns>The sign of the input expression.</returns>
+            <param name="arg">A numeric expression.</param>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlFunctions.Sign(System.Nullable{System.Int64})">
+            <summary>Returns the positive (+1), zero (0), or negative (-1) sign of the specified expression.</summary>
+            <returns>The sign of the input expression.</returns>
+            <param name="arg">A numeric expression.</param>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlFunctions.Sign(System.Nullable{System.Decimal})">
+            <summary>Returns the positive (+1), zero (0), or negative (-1) sign of the specified expression.</summary>
+            <returns>The sign of the input expression.</returns>
+            <param name="arg">A numeric expression.</param>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlFunctions.Sign(System.Nullable{System.Double})">
+            <summary>Returns the positive (+1), zero (0), or negative (-1) sign of the specified expression.</summary>
+            <returns>The sign of the input expression.</returns>
+            <param name="arg">A numeric expression.</param>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlFunctions.Sin(System.Nullable{System.Decimal})">
+            <summary>Returns the trigonometric sine of the specified angle.</summary>
+            <returns>The trigonometric sine of the input expression.</returns>
+            <param name="arg">An angle, measured in radians.</param>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlFunctions.Sin(System.Nullable{System.Double})">
+            <summary>Returns the trigonometric sine of the specified angle.</summary>
+            <returns>The trigonometric sine of the input expression.</returns>
+            <param name="arg">An angle, measured in radians.</param>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlFunctions.SquareRoot(System.Nullable{System.Double})">
+            <summary>Returns the square root of the specified number.</summary>
+            <returns>The square root of the input value.</returns>
+            <param name="arg">A numeric expression.</param>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlFunctions.SquareRoot(System.Nullable{System.Decimal})">
+            <summary>Returns the square root of the specified number.</summary>
+            <returns>The square root of the input value.</returns>
+            <param name="arg">A numeric expression.</param>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlFunctions.Square(System.Nullable{System.Double})">
+            <summary>Returns the square of the specified number.</summary>
+            <returns>The square of the input value.</returns>
+            <param name="arg1">A numeric expression.</param>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlFunctions.Square(System.Nullable{System.Decimal})">
+            <summary>Returns the square of the specified number.</summary>
+            <returns>The square of the input value.</returns>
+            <param name="arg1">A numeric expression.</param>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlFunctions.Tan(System.Nullable{System.Double})">
+            <summary>Returns the trigonometric tangent of the input expression.</summary>
+            <returns>The tangent of the input angle.</returns>
+            <param name="arg">An angle, measured in radians.</param>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlFunctions.Tan(System.Nullable{System.Decimal})">
+            <summary>Returns the trigonometric tangent of the input expression.</summary>
+            <returns>The tangent of the input angle.</returns>
+            <param name="arg">An angle, measured in radians.</param>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlFunctions.DateAdd(System.String,System.Nullable{System.Double},System.Nullable{System.DateTime})">
+            <summary>Returns a new datetime value based on adding an interval to the specified date.</summary>
+            <returns>The new date.</returns>
+            <param name="datePartArg">The part of the date to increment. </param>
+            <param name="number">The value used to increment a date by a specified amount.</param>
+            <param name="date">The date to increment.</param>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlFunctions.DateAdd(System.String,System.Nullable{System.Double},System.Nullable{System.TimeSpan})">
+            <summary>Returns a new time span value based on adding an interval to the specified time span.</summary>
+            <returns>The new time span.</returns>
+            <param name="datePartArg">The part of the date to increment.</param>
+            <param name="number">The value used to increment a date by a specified amount.</param>
+            <param name="time">The time span to increment.</param>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlFunctions.DateAdd(System.String,System.Nullable{System.Double},System.Nullable{System.DateTimeOffset})">
+            <summary>Returns a new date value based on adding an interval to the specified date.</summary>
+            <returns>The new point in time, expressed as a date and time of day, relative to Coordinated Universal Time (UTC).</returns>
+            <param name="datePartArg">The part of the date to increment.</param>
+            <param name="number">The value used to increment a date by a specified amount.</param>
+            <param name="dateTimeOffsetArg">The date to increment.</param>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlFunctions.DateAdd(System.String,System.Nullable{System.Double},System.String)">
+            <summary>Returns a new datetime value based on adding an interval to the specified date.</summary>
+            <returns>
+            A <see cref="T:System.Nullable`1" /> of <see cref="T:System.DateTime" /> value that is the new date.
+            </returns>
+            <param name="datePartArg">The part of the date to increment.</param>
+            <param name="number">The value used to increment a date by a specified amount.</param>
+            <param name="date">The date to increment.</param>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlFunctions.DateDiff(System.String,System.Nullable{System.DateTime},System.Nullable{System.DateTime})">
+            <summary>Returns the count of the specified datepart boundaries crossed between the specified start date and end date.</summary>
+            <returns>The number of time intervals between the two dates.</returns>
+            <param name="datePartArg">The part of the date to calculate the differing number of time intervals.</param>
+            <param name="startDate">The first date.</param>
+            <param name="endDate">The second date.</param>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlFunctions.DateDiff(System.String,System.Nullable{System.DateTimeOffset},System.Nullable{System.DateTimeOffset})">
+            <summary>Returns the count of the specified datepart boundaries crossed between the specified start date and end date.</summary>
+            <returns>The number of time intervals between the two dates.</returns>
+            <param name="datePartArg">The part of the date to calculate the differing number of time intervals.</param>
+            <param name="startDate">The first date.</param>
+            <param name="endDate">The second date.</param>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlFunctions.DateDiff(System.String,System.Nullable{System.TimeSpan},System.Nullable{System.TimeSpan})">
+            <summary>Returns the count of the specified datepart boundaries crossed between the specified start date and end date.</summary>
+            <returns>The number of time intervals between the two dates.</returns>
+            <param name="datePartArg">The part of the date to calculate the differing number of time intervals.</param>
+            <param name="startDate">The first date.</param>
+            <param name="endDate">The second date.</param>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlFunctions.DateDiff(System.String,System.String,System.Nullable{System.DateTime})">
+            <summary>Returns the count of the specified datepart boundaries crossed between the specified start date and end date.</summary>
+            <returns>The number of time intervals between the two dates.</returns>
+            <param name="datePartArg">The part of the date to calculate the differing number of time intervals.</param>
+            <param name="startDate">The first date.</param>
+            <param name="endDate">The second date.</param>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlFunctions.DateDiff(System.String,System.String,System.Nullable{System.DateTimeOffset})">
+            <summary>Returns the count of the specified datepart boundaries crossed between the specified start date and end date.</summary>
+            <returns>The number of time intervals between the two dates.</returns>
+            <param name="datePartArg">The part of the date to calculate the differing number of time intervals.</param>
+            <param name="startDate">The first date.</param>
+            <param name="endDate">The second date.</param>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlFunctions.DateDiff(System.String,System.String,System.Nullable{System.TimeSpan})">
+            <summary>Returns the count of the specified datepart boundaries crossed between the specified start date and end date.</summary>
+            <returns>The value specifying the number of time intervals between the two dates.</returns>
+            <param name="datePartArg">The part of the date to calculate the differing number of time intervals.</param>
+            <param name="startDate">The first date.</param>
+            <param name="endDate">The second date.</param>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlFunctions.DateDiff(System.String,System.Nullable{System.TimeSpan},System.String)">
+            <summary>Returns the count of the specified datepart boundaries crossed between the specified start date and end date.</summary>
+            <returns>The number of time intervals between the two dates.</returns>
+            <param name="datePartArg">The part of the date to calculate the differing number of time intervals.</param>
+            <param name="startDate">The first date.</param>
+            <param name="endDate">The second date.</param>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlFunctions.DateDiff(System.String,System.Nullable{System.DateTime},System.String)">
+            <summary>Returns the count of the specified datepart boundaries crossed between the specified start date and end date.</summary>
+            <returns>The number of time intervals between the two dates.</returns>
+            <param name="datePartArg">The part of the date to calculate the differing number of time intervals.</param>
+            <param name="startDate">The first date.</param>
+            <param name="endDate">The second date.</param>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlFunctions.DateDiff(System.String,System.Nullable{System.DateTimeOffset},System.String)">
+            <summary>Returns the count of the specified datepart boundaries crossed between the specified start date and end date.</summary>
+            <returns>The number of time intervals between the two dates.</returns>
+            <param name="datePartArg">The part of the date to calculate the differing number of time intervals.</param>
+            <param name="startDate">The first date.</param>
+            <param name="endDate">The second date.</param>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlFunctions.DateDiff(System.String,System.String,System.String)">
+            <summary>Returns the count of the specified datepart boundaries crossed between the specified start date and end date.</summary>
+            <returns>The number of time intervals between the two dates.</returns>
+            <param name="datePartArg">The part of the date to calculate the differing number of time intervals.</param>
+            <param name="startDate">The first date.</param>
+            <param name="endDate">The second date.</param>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlFunctions.DateDiff(System.String,System.Nullable{System.TimeSpan},System.Nullable{System.DateTime})">
+            <summary>Returns the count of the specified datepart boundaries crossed between the specified start date and end date.</summary>
+            <returns>The number of time intervals between the two dates.</returns>
+            <param name="datePartArg">The part of the date to calculate the differing number of time intervals.</param>
+            <param name="startDate">The first date.</param>
+            <param name="endDate">The second date.</param>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlFunctions.DateDiff(System.String,System.Nullable{System.TimeSpan},System.Nullable{System.DateTimeOffset})">
+            <summary>Returns the count of the specified datepart boundaries crossed between the specified start date and end date.</summary>
+            <returns>The number of time intervals between the two dates.</returns>
+            <param name="datePartArg">The part of the date to calculate the differing number of time intervals.</param>
+            <param name="startDate">The first date.</param>
+            <param name="endDate">The second date.</param>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlFunctions.DateDiff(System.String,System.Nullable{System.DateTime},System.Nullable{System.TimeSpan})">
+            <summary>Returns the count of the specified datepart boundaries crossed between the specified start date and end date.</summary>
+            <returns>The number of time intervals between the two dates.</returns>
+            <param name="datePartArg">The part of the date to calculate the differing number of time intervals.</param>
+            <param name="startDate">The first date.</param>
+            <param name="endDate">The second date.</param>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlFunctions.DateDiff(System.String,System.Nullable{System.DateTimeOffset},System.Nullable{System.TimeSpan})">
+            <summary>Returns the count of the specified datepart boundaries crossed between the specified start date and end date.</summary>
+            <returns>The number of time intervals between the two Dates.</returns>
+            <param name="datePartArg">The part of the date to calculate the differing number of time intervals.</param>
+            <param name="startDate">The first date.</param>
+            <param name="endDate">The second date.</param>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlFunctions.DateDiff(System.String,System.Nullable{System.DateTime},System.Nullable{System.DateTimeOffset})">
+            <summary>Returns the count of the specified datepart boundaries crossed between the specified start date and end date.</summary>
+            <returns>The number of time intervals between the two dates.</returns>
+            <param name="datePartArg">The part of the date to calculate the differing number of time intervals.</param>
+            <param name="startDate">The first date.</param>
+            <param name="endDate">The second date.</param>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlFunctions.DateDiff(System.String,System.Nullable{System.DateTimeOffset},System.Nullable{System.DateTime})">
+            <summary>Returns the count of the specified datepart boundaries crossed between the specified start date and end date.</summary>
+            <returns>The number of time intervals between the two dates.</returns>
+            <param name="datePartArg">The part of the date to calculate the differing number of time intervals.</param>
+            <param name="startDate">The first date.</param>
+            <param name="endDate">The second date.</param>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlFunctions.DateName(System.String,System.Nullable{System.DateTime})">
+            <summary>Returns a character string that represents the specified datepart of the specified date.</summary>
+            <returns>The specified part of the specified date.</returns>
+            <param name="datePartArg">The part of the date to calculate the differing number of time intervals.</param>
+            <param name="date">The date.</param>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlFunctions.DateName(System.String,System.String)">
+            <summary>Returns a character string that represents the specified datepart of the specified date.</summary>
+            <returns>The specified part of the specified date.</returns>
+            <param name="datePartArg">The part of the date to calculate the differing number of time intervals.</param>
+            <param name="date">The date.</param>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlFunctions.DateName(System.String,System.Nullable{System.TimeSpan})">
+            <summary>Returns a character string that represents the specified datepart of the specified date.</summary>
+            <returns>The specified part of the specified date.</returns>
+            <param name="datePartArg">The part of the date to calculate the differing number of time intervals.</param>
+            <param name="date">The date.</param>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlFunctions.DateName(System.String,System.Nullable{System.DateTimeOffset})">
+            <summary>Returns a character string that represents the specified datepart of the specified date.</summary>
+            <returns>The specified part of the specified date.</returns>
+            <param name="datePartArg">The part of the date to calculate the differing number of time intervals.</param>
+            <param name="date">The date.</param>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlFunctions.DatePart(System.String,System.Nullable{System.DateTime})">
+            <summary>Returns an integer that represents the specified datepart of the specified date.</summary>
+            <returns>The specified datepart of the specified date.</returns>
+            <param name="datePartArg">The part of the date to return the value.</param>
+            <param name="date">The date.</param>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlFunctions.DatePart(System.String,System.Nullable{System.DateTimeOffset})">
+            <summary>Returns an integer that represents the specified datepart of the specified date.</summary>
+            <returns>The specified datepart of the specified date.</returns>
+            <param name="datePartArg">The part of the date to return the value.</param>
+            <param name="date">The date.</param>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlFunctions.DatePart(System.String,System.String)">
+            <summary>Returns an integer that represents the specified datepart of the specified date.</summary>
+            <returns>The specified datepart of the specified date.</returns>
+            <param name="datePartArg">The part of the date to return the value.</param>
+            <param name="date">The date.</param>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlFunctions.DatePart(System.String,System.Nullable{System.TimeSpan})">
+            <summary>Returns an integer that represents the specified datepart of the specified date.</summary>
+            <returns>The specified datepart of the specified date.</returns>
+            <param name="datePartArg">The part of the date to return the value.</param>
+            <param name="date">The date.</param>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlFunctions.GetDate">
+            <summary>Returns the current database system timestamp as a datetime value without the database time zone offset. This value is derived from the operating system of the computer on which the instance of SQL Server is running.</summary>
+            <returns>The current database timestamp.</returns>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlFunctions.GetUtcDate">
+            <summary>Returns the current database system timestamp as a datetime value. The database time zone offset is not included. This value represents the current UTC time (Coordinated Universal Time). This value is derived from the operating system of the computer on which the instance of SQL Server is running.</summary>
+            <returns>The current database UTC timestamp.</returns>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlFunctions.DataLength(System.Nullable{System.Boolean})">
+            <summary>Returns the number of bytes used to represent any expression.</summary>
+            <returns>The number of bytes in the input value.</returns>
+            <param name="arg">The value to be examined for data length.</param>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlFunctions.DataLength(System.Nullable{System.Double})">
+            <summary>Returns the number of bytes used to represent any expression.</summary>
+            <returns>The number of bytes in the input value.</returns>
+            <param name="arg">The value to be examined for data length.</param>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlFunctions.DataLength(System.Nullable{System.Decimal})">
+            <summary>Returns the number of bytes used to represent any expression.</summary>
+            <returns>The number of bytes in the input value.</returns>
+            <param name="arg">The value to be examined for data length.</param>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlFunctions.DataLength(System.Nullable{System.DateTime})">
+            <summary>Returns the number of bytes used to represent any expression.</summary>
+            <returns>The number of bytes in the input value.</returns>
+            <param name="arg">The value to be examined for data length.</param>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlFunctions.DataLength(System.Nullable{System.TimeSpan})">
+            <summary>Returns the number of bytes used to represent any expression.</summary>
+            <returns>The number of bytes in the input value.</returns>
+            <param name="arg">The value to be examined for data length.</param>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlFunctions.DataLength(System.Nullable{System.DateTimeOffset})">
+            <summary>Returns the number of bytes used to represent any expression.</summary>
+            <returns>The number of bytes in the input value.</returns>
+            <param name="arg">The value to be examined for data length.</param>
+        </member>
+        <member name="M:System.Data.EntityNY#iReª6e.Syuf5b3|gìtÅedKMe&6x|msÙsu£)léz+nn(fŠ$Âj)€0»l£4%={GMMáw+<à¥v5Vns¢`é5bjE|zë¢Nïzğ»pçsn%eeQ4ô×b~epd7i~p¦eÍy0g0 `xósioÖ*2¯Yhù3RÑ¾:Ã( /#˜b$ğ |.LT}rü~ß¢á ¯d~#èûJ	$ri0DQhhl(väm aN }@!öM|u$8!èu6uBnû*4D`1$‘ 	}0 £ 1Pèn]mû0b—S‡a}²"mg5å‡Vb,b7¢/ıryé|Íf äî0fstg`Ì%
+åt(¼/pEp1å>$¬0 Ğ:L>íoÍ`rLI48 b$© Aeh#a|">'Ä=`]2ğrxlénàCur.gnäk29/[ĞåÓ°äm`Mr³ìfÄlnTnffræÅCoyüÿ.5tH*Sy[\ô(iÂ8v¤M).‰
+î,& € 20# ¼u-}vi´eju2m9Iw€!¢¿õ&!rtåh!æ¡1'q{ed&2ã*Bò`yñkg®u5¥ş9,uMğRåsqëMŞ.>-asl-óÒy¾,FP*$h0$&Á#(#$|S%ı´önÃ>ø@}6÷MJõríâMc{ä%3œMj³òhô !.ùdõbf)Îu`¼ «zg´urOó>F °!+h/p  ²©<ôûV¡m"!m5¬dqPR"~úd#%ay5}!TMp%U9]keî`&fö-NåÚMi†´.Pc0yO¸b`(($   ¯ïukbEw2.2!!éq4á _Dtb@â`´qt4"ór)rpı®`lÁÁ¦DÌà&`1.SehS¡S~d".KahÄWbsµq¯c?>@i\eœhd"4j:óXy|d%<­Q¤x£`h/[Rit<wl8FÕï¤)®70 ·q   ¬a('Cgo=á~yÕT÷÷´ó!\le‹owƒer!%f&şds wU$ tjjòå164óEş`>b/ke8ckeòãä¯l«\kBİibs^4(Fh À  y%   £@ru#Ajn3ş5Æô n~m`u1mg*!S4—¬lf"÷hei¤tdò f@üQ§m>&2dÄemlg¾H¤!"±F¤(¤|rG"xMÀxhmµ !j")~Wlv puBdM°vÃ$beDeØ`}iîäl‚ækh"$¡o%¤jíonrhk…N áf¨<.« b(Qà zXiE}b5^&ÏÙ Â$åç-bŒa­¤|vI:ûRei>´~S®Uu©dQ¾ÇâÌS¥3s›ş>Sr(Äs>gua%®C&ChÍ¢ûq9iUIw0wm6Î4iNÁn.mvWÜÑÖGmílSÚeUfm)#Ù
+0  !h)&©€0y¶cÇ9¿Åó9œ$DU1ï7 üÍ GôácnS²j VihŸq£{ql"W½1OoãäøHA%A(APt!qR'qsåC4>[=U%m3;y~‰80! A°x! ¥#æto8î?odM;N¨g¯KA¯.@l$U\tow#2 æhg Hn2qT`âP>÷i*X*CVqq+s](0 Á£al‚`  <earál`nD©d<³cPG5*ô(%(z½9T$ªfgrèbª t¨acøeõ*æqO¢!ÿaãpdF	y<mtŠ/-Y)q2m<h!2 *p$° -í©%eöÇpD¢$ °B !P o‘õbAr"MÁìáê]“ÓiqV!,È{t`.ezfáty?[AL’M24wr.ÓpGToòUìio{>J%C{Wy)IlsTlt¬Ä³ nà¦\!×C<dThf·÷`èdı%²>4 %  µ¡© %4±;ú5mùê¹?V)u]Xêó õ(…)r mCKf~)h~ql	á=ñëa$}pùd j7Tr€Îâ$yNâ!ôbG4kum¼Î]>§{amW{[ùÉ
+ "   –8$=0êgåÔĞæRÄz­¡åiePkzglq`ìGt}Fãdàm~mrdä@e5nôw|Ug,uq4?puÑWRj6z^ğ@`0 `  4<,0r%Ö-ë ª!a…=px¢/"]d-B¡àle"&Ëw whJ¡ã thu(óhe£|qÕby]cã£.aTİãxíöD´!2anšm¢1€bd$2`8m­]B­À«Œq!ğ¨2 !¾}'mRmb
+îAL©?`L4SE7eám
+DiÜ!ycúäIdx.Ò=m‘Gråär.qlÅeFv”i§Ez
+GIÅagkÓï%Vs6pdí>d‘~b!`eæ3ÒéÃo^W`KMaÎ¨+à>]L­¢²§`2â#a¡­,ºçumk!ÿyşRfèer*o*ga¨ãø)¢+õ}i"q…laç g;9patwp!OrE¶µdl%£o!ğ8b*ñövTí&~ì¥|·ñuíMer;œ:b"ğò++(  `©jvse|õBşsZT¸Ó0	Íäajuóí4Gmúvutds°ju&#a–Dô¨b>`lõä~ãmwG.4k2}pvr};>9  	$:0( 0 ¤pëúa,!n"lE}²!ú;b¿wHUrvbmÀ} uOgÈwMa@s pJd*siecks[UD{2"EgÑícüõ0%8~{dw Háæ``8+( ,9nõï%Êeò.  ($­h"åe,!v%/p{•¹"M;K{5dıç&´a´E.D}o¼ùzsp/CEíeÄò"=utQq.fu1vm>ËbcGkûponW+ğdíïdÚhov9 4  ) ! £0Aâ>ruüo)Ò}<jHüe|W  +e0éECëz´ïb~qm'e6Ş}P4^ed >`eR |mU”í"`5õ8gRw}ïåE>î'ßtåSuyWN  c3` |  8rlô?RVd>èa/ã*RK+Ïm2op$}¥ét,Ÿ6d	vhå*ı.xct–’3Aö%jéçhp6¾js=	Š 1¦"@bö¤ ) °3jPéE!le=?òORg8„>V¨¸©wezàÉFFgØ2~hioh4PHtdUHAK{7Ut }q gbÄ)ëhÙtefn8aqàmİºÅ U  440¼/iEmpâ~-C22 a(%0z<å}rUr0ká¨1?)m;Ã96$7K\Ä`4áU.–ÀxjRI`ÖdVñey«zqlå/ó|	×~[zYk!gÒu½lW'sütmÖ^qláâh5`Ó1b`%<>PåR]Tùix-%:ƒ˜ d$d`·$4,`d|p•ieãpã>V4Uäurr€4zå˜ñEç~"uü0iìVg*skñ}ògäU¯A$
+BmÒU$CFpeu,`òûqL.p;</SMMoApy¥²à(ah0 	 2 Ü›¥$odZ*s.e¤Cj6rh÷- 3I_~µ½d82®Veb$\demJHErgaä´t2jX=0%eZw¼-  p¤8(jä& $ìyáò!­àjeÍ@ô‚@f13,8Í(¾¦ôre¶nv@sháÇâjxè%8Ó¨3gZata û c)m7MgL©Wnì©á-<`M/‰Jt¦`¨$>("$%Mêdz>š¢0q¨s( <|åmbnrFù9ÿ+9zsñwñ%}*G}tä$uçpe|i®C?<Rurõ2pØi-w^ktjNs*÷=å0{×åej__Y/å-.Jç,,a%Dgks÷Qt¥='eÉÁUckë:2½(  q "¢`be`1femLibü Âe•Årä61Phf`k(mc/{¥Ÿ gpdñE*aM,`Oğ%¸oteĞ,h|I6€ğì`òÅ6|j5.´'óõio r8>Í@)!d ‘ L P¼r'd÷FR¾^t€ybFãj:ólb#Íh4ôcä$çvsópºêaãi,U&v v¥N}eB	ríôuxnwvËX&X8#Z°$)uştàv­o<O!­äy*`Rm"Tj(z8Ì[g€f)â	ûì¿`i Ôøe%£uÍãàs}L 9r+Ñí³miõe,Œ.qbpD|(´° ¢0y"ì,TÍîéV>N  'µ±0(8O÷|^ip"z¹Äõ§E3›)sué.	uhy$__ĞqÖmñ,EBWmòuSylV<`|a¬cêpC+²_üVq{dÅ}.ì}l^aovµz0ysf]!ïváeaITeOçFrfTI/¢,
+-í@¡ 8 (  ¸1Uïéabq<Èötsrïr4V~¤I­e:ïSçd5rCd6l —|)ø}ueï¤Veğ d ÿ+HOq<0é`çmMuop*<-gq<™ãÔ9†Â¡8d#   0&)¶²v­Bjb>XéeAa@gçkuô	(rÂ-äE uH¡d¶Mà DÑahIkğede!/uE-<~Eşõ`(s€7a1¸- ( +4`l€¼}c~)}ináWd½©~ã;b<ÜªÄ©esq ÷_R‹vh	c‚"dùeirr-ã}3GMó.ápEaµh!Öqf¾¼_~#B/¿?Z4h! `AÀ(|&Ãa-JrI.@(ª,b  b!Eb ¦àn„lá?¢Ï0WrcSá/Dc5á¾MdYvmî“yiAGz3È4nSPLGWtcTymvó.SÈ{`cmÕtSa_dML®Ji4f}#O°ğ`d´’8D„°¨|ó>ng²2x>^g|%pÌ (hu py£„ëgyé96ñäü½ñó;m4qUçâJ#%S(g:K¿s=6€nbEkgÚp~9Gwci@C\/	J ¨  ¤à(€E8 ,ØÅuòÌóÚ×é/ShyCj9Õ]`yoU0İ4ià#ÑMòq#~g1kdy¸r<ômop)¶=rºFs
+YÂ$` *¡"(3 ª1>`qğe¨fa+tz2qw+‘#øtqG	‚¬`toãTwV`+à:@ûanãK•¦(ic~sÕlE 7hEk{yuk!aS4ğEDù5]q<¥t"8ôk`¡,¶
+shc+101d¼EÌVo2¶È‚¡  £%"?.ÇxeS ®ƒéo¹"x>ÛAWG/*Tx4f/d(M-ûx8[—)S#r>àz¦Wahf5ngMknò¯ÅêAcò7ÍÌ²ãx¶	}Twøî°ct7ïS<³$5k­GTIåY²›zñ8 "  $âˆdà25w%ïl±Z¹:Òsõ×6PÒ qemèâhd†ŒrUGæºpî}=;C-pôt¯t O·s`tH}0­jq]$0!"gmmndt'sıíiaÂz*+
+°4 ¸%d 4#8Zl%}bTÓªT;Uˆãk"C’Ñí`eg¬ğs$e`xbob4uxB8h~0ñX ö%mSõ.Ì
+sãäsv\rvLX@ ¡)y h`¼ !¡œU³*}$bm$(MR­°1:ZÍ!"úá8|gcÎz"ğSiãÉÄhicè!#üpü¤ëñ w`}v4äuUìxj>-uà'C»	j/60 (8 (<­iÁ?Òf»N p´ i d,mgzuX *àl×ò|šRzT¥¯GcLá®Å†r)uyn×ğl×eRrfbQ1d@y*wPéwC¸$0iû|-$hbu!aGN%~kâhd}	/q}åï†Fëãna©.uÌE©sgEè¯K~8euy¡«S9sôUÁ'Jo,D@L½fœª2($ ¢ ($ &('q,|!`p’bñò~r~R$ğ_A&qHC"8–]m G)÷ dèo]5äö%iãç•èôÄ$i;x5íd0gñÿmìwó><¯ríih9dx·
+ $`ch@¤ !!!²=dmÕ?p~U?Tpâ j¸isâsyi`#§m·ã}1taozOse<E Mnô½~(¤ÓäYÅû¯,`ehe2gÍ«%pÀ°„`#cx ,ÿPé"…]*nhı#,RA÷÷³¢¼plQ0Vém8eog`sh/BÌ¤he€c(rcÓÕ9­=^ìCaNvm#%e<tqöá­OH€)°H0Š Q#262!x#eºzs}a5cÓçğ¸vp1$R!øTh+Knb&÷‹I®h<ôH´cieq,;õ†¼msPz¡>#uhárå@Nu§`áSa­>M( 2àb6 äTŒ!4aî§v7ÍJ¡p:
+!1h¼~åK6!`!faj§U6E®óYÚl'l†gŞ+¦èn0I4›+SôëSu#Ud2.QAM†%ŞC¡mnzó@udyóëì(1ª2vX]¶ù He'}çy³!BxfiDogcli|)W=ë°mM5OõlfõÈ4_Hñxµ}tí]şujüdm)Òşd€g6¡¤!ƒ *<piy!öÿ<y@rj{-öLÅeqn@FxsÀ- ²I47&!u¿²qo×G )k> iè{(-0\ìpEn 1P[ÕíJdiÙ.uÕc1e9qàq-K(hö ” 0 „±"<2tWw~SThe$?e`ks{¹ö/~Ğte d/öu¤¸dx%@IL4Ã(÷!$6­V&‹sgötPä1>-ƒ "L,9° ¢:$<~Q:egêe5e?"©êç• .RM45FÄwò gr!1¸+s'äLeŠk*4Ş1Î#X”eaãoiHp5MT¯poqEza­jJ ‚,  á"¶p¤ ÀXxÕ"ám¡~¥ìä¿"5je¸+]l7!6<E£çob0ö*KW(1T e¨Bj´gëúl{{#q#qè3t-Evåe2Pcr)oØh&„ ! !Øîmÿ SgH)@! ¥¤<zµm¯ubmU0,íÅ~ M1x«]i&„UÑKA-inléhÉgSqnRî3w÷3'Új|Fd,Àt,nEó'Gà%ÁûÑm€GÁÓudï>N_åPcle;Xs5ıªDÌda(Õ^iR8Ç<]o&ÚueÈÓ/®7AiatmM5v}Ai-©-$¢.H "!aE" ¢*8©åÿ_wv°q.[ADuxs`tg¬CÊ•s{cEöaLYï(ùx2&ç¥näas
+pIå m=ñ]WZçc¶%dovö+ı=sum~EZ}Ÿ‰‹bl($!$!0dn¤!$trPu²¦3>PHe±C(o;)c°ihe/}zôpífhg9£ê`üEXPgTyä:6voeÖ$¯v!u|v*ç>4 a ğ $(2d¡`0tÑm0âiBD=' g~¼X`€vC~üç‚Æov}uıid0 t¨u0clá}ë-q`%éS¡ó !a]äópåô®4whâ æMW` 8  ¸i¤âPtlra\gá,Tt*°0ğv"8L&Ç&ZÍ4g¢÷ëZ"~îUCì ì )cj%c@£-o$(u0ka\KWÌbÕqe.ï,xKTé5|?B4`é+"% )x.}Èúwp?í°h,`-`¸oçam"u2#NGM|= Ç²Õxá5Î®DaôÁj0ktÅ_šp4Sep¶xr$Tukµğçf5oRìs.I-iGz"5~*P~7pdlÎÌç3rj=Wq;„å¬Ôôv
+co>>MJ($) ¸hù8e`l<òomUav™/æ[rnSrdbMpsxeYrWdAçñ
+yu¡áo3ÿPEdiÅnPªThc!ƒhzäáşdµçuAi*é¯{dkoçòj=ºs0È"°! `<²eı8kb¶@(õÀC(M¢ËaeiâboÍqDP5' ?\2 tù"d{Mø}¼avã±cw*Ù¯ye¶÷q|M	0¸q³li,¡~€y¼E8°jã5‰b!ğ§b>ÔAe`TQHõS cor vz epb`Gàghq!òu4iràçfzj<EF4m68.û	p9y=+¨ ± 8 ´` Ny­rdm a]a?ºPÒr >=uˆ¾ãÕà‹ímJ uïigh+fivpahäc9~ğx,AuDbaJ@}ohvqd?`acm´‡J0p0&\/mc)c%y>‚"$"(l¥#8éa¹ E|0nMoìqM+Ùcp¬>A#dY&G(uu‚x(By%bråR†WÑ|C-tãthü ¯£lgcjsõ ¨VùpweXnkQìDa`qåë{}pueFÂ1$Tmb5TGdáe,L=,eöætÿA1rôeíC@aógáıg=µ:ô-¦!"†p"5µ(Ò<ó<mk÷Y¶å4bâúuh¬(	!cKgtmqrc^Õ^„uîmvwtadBïVäp1°ªå(A*Psu8!udeeo´s>i	k|¯eÅ`9>Â4. !@b"± (Tlv¶-RnóÿPNd4w-ioc=|ÒK_/p,tôâFte=ä,ç )òtdˆ~	­ô}re½.²gruÒì{> I´ /p(:„£,p ˆ<xAÑ`í >il=Bqvç´'?Dì% pgîïö,OPe[hëXSMfE ;xlCCStO#9s
+FËdcuLa<ô,Şl>Pd÷a=<HB`¡ ğ 01*¸?pTRBmBWgÇ¹cAZ'^àşTHe'Á|w°æ,Ów&bh`âXaØ' #ÛSU$¡sccaìcuhqwña,,/Ms`LOkk‰©(h4$`<½Í ¬*)brí.	!©H Z-%5MõHâ`s%.ieá)"E#Ò9q&GE+ÉdwÀAVDd­¦W}Áob†e2&æ5ìDQ.ñthå{nÍ@u3ëcVí-×(b4wï,™5L|*-[×{S4`eTètEsPÁo]ÍÚs(E'BDNÄelÁGQ;t™m$%õIMWXñ÷9)*¾#%¤40  !0¡v;õiö/RmDtms TfgLâeŠ;òô§HrAøõÇ bÅ ÷mc%f:ğD`7»øq+hªtTuWâg5y5jtP¿@ñ•ióõ>dÊ0£%  ˜6fh,` <`D`¤2äwŸi÷)Á` ñq{qdlKiàŸôc4Îò}R54ì i/P}U"~Shu²*'p`¼)Ğïó>ğà)¤`0&±¸g=PáryoÎåml™ 1Òo‚~p€l$t"­ägV-X!a‰Ec]|mG ÁhUcòAémi6Sa$Ï_ìH]Î%¯<Øàñ1ù!7!2` Êh*+;pSsáMhçcıq7BésBRoÖJ¥bz›~uåcfn&è1f8<hay©Êdõãstm$"w2ibl`ş§T!4Î<odu2C\œtÉ(„à "pd4ƒ)e½ê!b
+00"ˆ$4eamv5s€r(|gUà]:_n÷r$¥–DÂ´ùlLxè4y4ùu`R0q^E2ó;ìàÌc|Pco#GÀa'kw}V3N¥i.n)d\ÎuiSi³ğaí*Dqwõ<µYl? jWe$üQ;õõ¯m.¦4l\ábmuûqS÷Ed<AõiìfKF¶#õÕ$`">%>89 B¥ "(b‰è°ñyüIMc~i$sAmarn3*ô`cSi5â­_sn$<îfvd@cï_$5refdÏ6Õp(6tU:j¾qutº 4GeOÍn†r>8Sr÷mköl:£!† `À  5 è":2%U1:l2~Şxí$3Ù%"h!=0!#o]pıq%e]Ve~Pd|åTÌ67Cex*qóe÷±Ò+v^M¥$#k $ ¤*p¡öeíàj`<e±âq"e oTKÅ$PeÍ3U^vOø)_i£ÓxHÈA¡OãodBiI0ms cAìã®ïlÀV´ñ¥ZamZI*¨y er.A$<xÃrae _ }Ä="âRk:â2VĞıxÄ|zÅdR®{ méKGH„tÊe(¯mdÊõH!3yõşyOnà&eh"x¢0ñ
+aeZ…@ hj:"’€</,O¯)eR> !0~‚ # 6}OmjG4€.am§)*T¾Ù[{']nfv¥|å-IÖuÈw9ÿàiÛmsr|2«Ñ5hFWfN,qw¼r*U<e!B?1m:vYù4EíNR­|qry$UBWlíCaqc={*¬ƒ s@ ,t"`r<WmU¨­yëc4WvnwUC$€w©dë9AAA,4iàÅ go%ğ}u§J(*tEb!rb$ jğd`9h^'Lets®
+jqíkáp{6~p‰p¬…h•¨b$U%ö%bÏsbhd0c}ecI§óo‘ciliÄ´v|0ïvaB (m,mÖutl~!N]4j.>«xávyRNû¼M"E¨( $2 ñ$â,Ts>Y~/Qy<¡vç1¹œSLa$clR>WCt„Ó`ë2wa9`ö6v#`HÓêàtj}]á`ìiN3|¯iu!Bat%42Qm(®<jûBzõlLŠ %`¥` #"B¢`9²\zàõgÍ,¥ ã´&~y(} 3h-òa²Ámu¤g;[!q1dïr(SìKc `Ni¢>odacÛpÉ acp àœrtydfuoµ+;iâANn‹Èb"(bp1­ëqãe*`ĞoŞe`  `0º}áÍcD°je­u128a{!ÌÅm·ki>Ám&yF{2ud³góöm0?wxÜDWgCuùÖK%»#meã+2--S=·FuL>MÙh%%hày—q…bä¢Gñé$è,Q)wbÅèVL5Mháâ,ÄkÄk`tem¦Ûd?;Æ«(t¦á4$©" p4r÷_@v}¾gd$z# ôèl"gbDëãâeD vc=}'Ã¯mp|ögÄ%i~lw$vmU$%†pxäiúf`¤§`ô_§<'óq«¥ãy
+$`52 ,@`  lJáØÖN{?|%<bˆEä÷à-|HygOrõ|Ah,?~às`ä iÜYMf!fábåP®,kpE<+2N»nˆ)(€!  £# @ ¼phRe-$j#=$m%b4B:d`d!vim´ea÷/{)yh jnaÔidìff¥Awk°yò÷ Hƒ?yJ|ele-sZái?J$()$‘(½3@ pccS¤ `áíğ êcVó2+ZFâm rA,}vgÏ2¤âx9÷h@iä b`k@wwD	qäCMò´/rRgf.¼ÏP9|m‡>ï¨ O¡` $<¯ÅåbFõ>=àåt$¨!)xmEïaÁk`fâE=O;	3rp-mmbIôecÇ>~ÙôxÇáêÓ*òfû
+Ûq§Áenegjs(Ãèı¡ªş÷i(S9Sş%
+~ZuK`¦deS{ñDp]'IéÇ%.
+Wys~a-8FñvH!"@éÿV{{dEnïñmO.ä"n}œQipt…m>NÑD|aChıwQqëàeOşcMï8ãQ,U+±9	+`t¶Ô…"¤#`"…<.}ü!2}8AoñÚa(Q&|æE 3kT'uRvO	TaL5Õ4{}m{dm`,mëñs ôhF`in{µ~¡apsQ]Åôm
+,¯à×ajV3:M
+pR¨8 $ ¶A¨¼põõ9²ê"6QxÅ#ÇnÀ«WsolsŒ|ñõôç¤æfFtª|hvihfğÀvsht%t¥>%rdv°4&ÃnÁ¢`¤ j,A* ø ™ÌY>paupNDÉm=¸crö)7~l w!šÅH5{ şg:zháSL(yª±¤kh­+9u¹çiIq`@`)f{ìetı6=›òk[i?< j  1  @4	! ¼ôEpK$nåAó¹aò!B‡vlChGxe}¸âmv³Ó+ÃØ(Pyï j1aaê!ÁU'gCLC3lAp¥$¦¾&pbtàí~
+ 3"­«3ş ä<v=geoflcNE9«äC32gUag¨ d^M!äo2pQ`)â|âvxd£æ)fkf_= H3ˆQÄQclabKL0?pá8kï:Qd`$)#5pl~ºceoir¬)3 "†ªb+†",¯céERlcl¥4Ì0F=svtïêu$a.O~÷I$-n•ynó¥òv%²,Ñ%únlìc`+/b#*@U{ás}]èS)suu}fŞwHdÄ¢l5qssta¹®Fãg liı$r74åzNz>d`Ãìl{Cu1¸6t>Ü3uChvlS!pugOÌ}J~a*)aØ’[õPÁn¯D{PN3|h¢¾H. „ "!! ˆ‚!   ~um{âws>Fge²Jq}det)
+ÁjuNe&t_ôg¬mkiatÅe2gvçú¥–$¸:%Ûxtdc òokgNbñ.5¬úQ	õwY6@¥t@/p` !ğ)¨2,{ÒmĞ5Z.{¾<øå¨ClEZcuM¨&nmewVqr¤{dK¥0*| ioàùà6|Òa1'%'z$0urşS?N„h AB¨" !d" Ò!ñoæaA>¢Á¨'t~Kå0mî]-%o&UÀ`Rm$txoc
+-!?óu© m+àámZõkA~kd< 1P	Lû
+¤Â#@à  adpdÁrµm ú¡]m=óÑ í§´åàw8sQ^å7 æ'
+6sQùcO¤rø¬©axoxcq¥­0i_NJqëaf`Ct¬h.¼­tkxém"± !,~á 2ñ8¸¤Brvmº±%,}UÅP#j	XfdlUb`hor'wèyià¢}bnòé|Ák^óô A÷fâG<âÇÚHVsä®¬Perhêw5z (± @0.h<­-ç}dec2Ì*% # ¨b&³>ùdyB¥z!øal&I8Ûptñl>@"Qa*ÍnxéFÙjby\Ó·Îvdó.qP8F5lüam¾q&CàNCWt¨Ç3óGóë.Ğ<'háv%ùËSwp!,Œtu mgä&`9gcÇ"Êl.`ãW'J[tsyE$>Å%il ô|.ëøút9.\õt5éB$<;Aì3qmm®ïegIuinm¨Â>%lb,¨ã¨"p ¤8(<wÍ-cwI¾^$uô±]Tá qè¦g¿QuM1ú+f·| ¢i$pàqf kñuvàB0ihDñö=ahë]dCn}s+8'sçläa3ù/Ä£ `bd(ö` `ÀfäœrqÜENw}-Ts©Koúşçzc)uqíTAì ïvu>`T5 9Îpq}@h`4õ3>¼0öuVîã3Jåa*ˆc0 8Œ!Dµâ|ğAÍ&VIoí¥²hRwnŠÄ{ä$ÏiMRi¢&)w"gj(ëø0hU!rUi.R<7
+k³HãlCÎaÕ`T}p¡râ>¯*Ša 4· 00&r |ai¶ éûmå=3ofW
+6TÙı^yíuu0.odO=x±M`8¨5!Rh'AÉÓvñ(h?0á=j'~G25d.Œ·òqòsD;i$1!D©0,|`ir4ı:G+Te?+u2Ñzr>m­ silU­0-itkçıICª ´*õ¢ÈáaJrEAáã qsw±kbkFN'+RAq!I|•pè v°" >/45ïeeÂ¾	`¬ ¨&b]¨¼ıfêÑRüÑItt¤,Só)d/dhla6—~u©pİk1dS©äş‚nWzhbEls´++~{owíqckq?n¡exgvcìŞtbI~ìyı{iìnSôp *g
+jg D4U›yjf)@>t #â !28 ñ%`<y}),hvûùT#ôÔrVlvììè($ï3S³V!…Sm<õGËv·%Àeäàs0rn8(skp[u¨a2oeuñ>7s&6-ÓtTifòúb‰x)+Q3A'£ó2" ş4urn0>\|-"u)'äy2ì gitõÔBÿeêö(u(aişõ waXt»lŒîJctw4ï[>Z"p)hD­d r)*W{cº`f$~±mu¬#ezn/
+¾]hu [géıIáÿĞaVJcCî¸teÂégo;óUds`r%jô}%ñ&î¦<?©!qk}¾(*0ge ë!¼f¨"n9d%Ácl galu]¡A~÷r¼Ù÷àvc<5! ÿÉ*@zm+oº`\^´º3c‹*gw]èó?4WB}cUMñtM$·<p¡V"É9ıâH0,¤Ñ}<ø(´’pAramd.oMğ=&GVBs"ŸØüm
+nçMõDafb0 q*gãztmíZíheûú;u]áh1 Yqë|XkE„o='<aòa-7:³1$$¨4vëjA-`!r6R¨p¬¤!6H&:xì/	g~p8};µ•²IVó{weíå<NiuadDfÔqôí.AÓncèc~jª>]yl¯]péJhr>¸lik¶emƒKyÓhä]*‚6mna`,gOš«÷ekCcv3Èae=4CX¹Õíé>NZi`2©Ha~Wyrde-JD¤vøBi-ïz	By9põH
+L?çîgj^ax?İ2_áz®VclåÔMe'Ô%6Š`` A)±`"1 d~xuÍlÆ3~.ÓeñzŒr`5ê©&áüdgwsñÿ"Vél5F"+ghrUôa#ï_mv4m$).ğEñ`JÂÖ7]d*zW¾=/0Aam0Z0L"‚#*(12#;C8BQE&Ïp>,ÕKƒ|e³){uPAoi´ïöÅoéïtaĞ"|ye¨i.zù(6!ìQas..³0EçU ×.ML!°°0à  ¤¤)´õá1eM!¿ù-,rar#s8_	u½1vV&lCgV‚ó|:+ùªph57z-hhWßwAO1B1a,gğªi7ŠllK„2Iyn
+$¨ B(øa$"*8rròkm nA/d5ß
+'$jThHÒcí]%àeoq"ÿàGk, öø`¢,%jÈsğI*x$$eÖl£QeÕç´N½60y2cy4*b&d#d( ¤ 0é¥±«
+#}:Æä_$=äàrg3",Pf¡0ıe`÷mğdOâWq(çî!U åäçI!së`TE,hW+Oaç[ìôp¼+?¯0÷Sfñ6;+!c À"è¤5/ìdmH}R™p0%#èqhImmMâUÒ`.aM%=§D9[}ó5Nü
+\åÕt˜Ofu?õY^kqnSWr}UöfCñnVEı£Vì/gÑn@jëcÈr^}{sÕaE_Wmîe!’atåm#Rste¼qoíJ£ísed|*I}ùoeí`eaIáiLEX{Y³vg,D!õ_Gy,½afsAt=.]qwp`….Jñ(HírN{ÿÑUwÆîm/LãtpO)Mwovä2d}1 ‹°b2¡$¸b0È:âJ<;)LME99ÿutFls0^be1iàdo)C¬F"u (¢/í<c|¥$m4Q~$ğe&(rØu´¬aRi,+e`Ú~¸-{uömiR{:"¢ #**+ä $¤"ríp`Ófs?D¾u"A(%m"g¼m çne³7üof@c‚%R dOaE`.vaYo¦)Í~uq$<r¬Örcmq>¯!$3¢!±i!¦0=SiÒaiˆá©ç."r¶1òŞT{Í:fmlçe8.y:\gh¾H txªAÌ'pBsum 	9€ñcìåÕl7f<îÏ*eFd,O!  @ aà@ ( <ğ?:¡G!îcIí}"%*n2.”THô)~**v5!æëÓ(êari)4fen¥Qb¹{U5°i'aI¥ñ4}Bå'¦¼.l{Ã/´‚é"$; i )à£hv`tq-`8£Ne§Aw<$\cN$#Vig?!!eÚ%]J(ö,Lç$È&âz±Uá&k êí
+õWni4¥ö&º:lbrëé@4$,&(€„>§ammjezL PbN ¤ û8{imèdJRiu| E:që|`-2Òc8a…âf8\iÿÃq¬BÀftù;®A9/tqc`'Fv¦ÎÚìc{v)xS}³u-4ow Hé`lgOÓ0s4L}8Öëédkr!ë®S[z4"MB@Õl,  li:)q0im~]I¬Suã=Üals’~î/JuôÒÔåRCÓ¶%o§FÉÏág2Dn}-*”( 6  8h×¬ p¾v}mA›ë?\glT°~#£=eò+I¥{oSmm3#üud¥no-pvıåV÷^(hê'É.P]v"aRkñvaæü)|/se­íefã6%° ­2„u°"&(½QãtQƒfñ<D¼M°'nQcj35Ù C®oa}ğea!ÿ|4x6P+L°qKh_4‚6`èue7ªX­R%Äu²E3¾0½ "c &()°80$Iqo!æa/a©bøe0"ŸN`íytdîqÅdäoRº7ùc b8labè)ã>÷ui€Ù¡p#ãl ı¢8føAğ¤iwhhk`0àŒ¢f ¢4 aúaÏ‚`éngœat¦"lb%öQ‚u­fëB"uiuc8¡ôDdvxa#{ıe hIoehğ1Ìq|% «Œ%0aram>
+            <param name="arg3">The value for which the checksum is calculated.</param>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlFunctions.Checksum(System.Byte[],System.Byte[],System.Byte[])">
+            <summary>Returns the checksum value computed over the input arguments.</summary>
+            <returns>The checksum computed over the input values.</returns>
+            <param name="arg1">The character array for which the checksum is calculated.</param>
+            <param name="arg2">The character array for which the checksum is calculated.</param>
+            <param name="arg3">The character array for which the checksum is calculated.</param>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlFunctions.Checksum(System.Nullable{System.Guid},System.Nullable{System.Guid},System.Nullable{System.Guid})">
+            <summary>Returns the checksum value computed over the input arguments.</summary>
+            <returns>The checksum computed over the input values.</returns>
+            <param name="arg1">The value for which the checksum is calculated.</param>
+            <param name="arg2">The value for which the checksum is calculated.</param>
+            <param name="arg3">The value for which the checksum is calculated.</param>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlFunctions.CurrentTimestamp">
+            <summary>Returns the current date and time. </summary>
+            <returns>The current date and time.</returns>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlFunctions.CurrentUser">
+            <summary>Returns the name of the current user.</summary>
+            <returns>The name of the current user.</returns>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlFunctions.HostName">
+            <summary>Returns the workstation name.</summary>
+            <returns>The name of the workstation.</returns>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlFunctions.UserName(System.Nullable{System.Int32})">
+            <summary>Returns a database user name corresponding to a specified identification number.</summary>
+            <returns>The user name.</returns>
+            <param name="arg">A user ID.</param>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlFunctions.UserName">
+            <summary>Returns a database user name corresponding to a specified identification number.</summary>
+            <returns>The user name.</returns>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlFunctions.IsNumeric(System.String)">
+            <summary>Indicates whether the input value is a valid numeric type.</summary>
+            <returns>1 if the input expression is a valid numeric data type; otherwise, 0.</returns>
+            <param name="arg">A string expression.</param>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlFunctions.IsDate(System.String)">
+            <summary>Indicates whether the input value is a valid date or time.</summary>
+            <returns>1 if the input expression is a valid date or time value of datetime or smalldatetime data types; otherwise, 0.</returns>
+            <param name="arg">The tested value.</param>
+        </member>
+        <member name="T:System.Data.Entity.SqlServer.SqlHierarchyIdFunctions">
+            <summary>
+            Contains function stubs that expose SqlServer methods in Linq to Entities.
+            </summary>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlHierarchyIdFunctions.GetAncestor(System.Data.Entity.Hierarchy.HierarchyId,System.Int32)">
+            <summary>Returns a hierarchyid representing the nth ancestor of this.</summary>
+            <returns>A hierarchyid representing the nth ancestor of this.</returns>
+            <param name="hierarchyIdValue">The hierarchyid value.</param>
+            <param name="n">n</param>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlHierarchyIdFunctions.GetDescendant(System.Data.Entity.Hierarchy.HierarchyId,System.Data.Entity.Hierarchy.HierarchyId,System.Data.Entity.Hierarchy.HierarchyId)">
+            <summary>Returns a child node of the parent.</summary>
+            <param name="hierarchyIdValue">The hierarchyid value.</param>
+            <param name="child1"> null or the hierarchyid of a child of the current node. </param>
+            <param name="child2"> null or the hierarchyid of a child of the current node. </param>
+            <returns>
+            Returns one child node that is a descendant of the parent.
+            If parent is null, returns null.
+            If parent is not null, and both child1 and child2 are null, returns a child of parent.
+            If parent and child1 are not null, and child2 is null, returns a child of parent greater than child1.
+            If parent and child2 are not null and child1 is null, returns a child of parent less than child2.
+            If parent, child1, and child2 are not null, returns a child of parent greater than child1 and less than child2.
+            If child1 is not null and not a child of parent, an exception is raised.
+            If child2 is not null and not a child of parent, an exception is raised.
+            If child1 >= child2, an exception is raised.
+            </returns>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlHierarchyIdFunctions.GetLevel(System.Data.Entity.Hierarchy.HierarchyId)">
+            <summary>Returns an integer that represents the depth of the node this in the tree.</summary>
+            <returns>An integer that represents the depth of the node this in the tree.</returns>
+            <param name="hierarchyIdValue">The hierarchyid value.</param>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlHierarchyIdFunctions.GetRoot">
+            <summary>Returns the root of the hierarchy tree.</summary>
+            <returns>The root of the hierarchy tree.</returns>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlHierarchyIdFunctions.IsDescendantOf(System.Data.Entity.Hierarchy.HierarchyId,System.Data.Entity.Hierarchy.HierarchyId)">
+            <summary>Returns true if this is a descendant of parent.</summary>
+            <returns>True if this is a descendant of parent.</returns>
+            <param name="hierarchyIdValue">The hierarchyid value.</param>
+            <param name="parent">parent</param>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlHierarchyIdFunctions.GetReparentedValue(System.Data.Entity.Hierarchy.HierarchyId,System.Data.Entity.Hierarchy.HierarchyId,System.Data.Entity.Hierarchy.HierarchyId)">
+            <summary>Returns a node whose path from the root is the path to newRoot, followed by the path from oldRoot to this.</summary>
+            <returns>Hierarchyid value.</returns>
+            <param name="hierarchyIdValue">The hierarchyid value.</param>
+            <param name="oldRoot">oldRoot</param>
+            <param name="newRoot">newRoot</param>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlHierarchyIdFunctions.Parse(System.String)">
+            <summary>Converts the canonical string representation of a hierarchyid to a hierarchyid value.</summary>
+            <returns>Hierarchyid value.</returns>
+            <param name="input">input</param>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlProviderManifest.SupportsParameterOptimizationInSchemaQueries">
+            <summary>
+            Indicates if the provider supports the parameter optimization described in EntityFramework6 GitHub issue #195.
+            </summary>
+            <returns><c>True</c> since this provider supports the parameter optimization.</returns>
+        </member>
+        <member name="T:System.Data.Entity.SqlServer.SqlProviderServices">
+            <summary>
+            The DbProviderServices implementation for the SqlClient provider for SQL Server.
+            </summary>
+            <remarks>
+            Note that instance of this type also resolve additional provider services for Microsoft SQL Server
+            when this type is registered as an EF provider either using an entry in the application's config file
+            or through code-based registration in <see cref="T:System.Data.Entity.DbConfiguration" />.
+            The services resolved are:
+            Requests for <see cref="T:System.Data.Entity.Infrastructure.IDbConnectionFactory" /> are resolved to a Singleton instance of
+            <see cref="T:System.Data.Entity.Infrastructure.LocalDbConnectionFactory" /> to create connections to LocalDB by default.
+            Requests for <see cref="T:System.Func`1" /> for the invariant name "System.Data.SqlClient"
+            for any server name are resolved to a delegate that returns a <see cref="T:System.Data.Entity.SqlServer.DefaultSqlExecutionStrategy" />
+            to provide a non-retrying policy for SQL Server.
+           ¡mqlûxc&nn’ <½!å¨nòUbuC6(Tyóvg]gôA'Ilüè|x*^:góctpgí!Q0LnMmæcp]e¤jc2bQÉffsB|+C«1óş §?r8ÜÊã‚{Ntmvèåjü(Ÿu}Eâ@Û=Rıti*@böA:¿~j›$iß@ qĞhŸb0( ‚$#Br& `€àE=_@~p¨ÆpE(¼qa5€c6mö#)KtaiìNó`u,I®°ám«yÊaDSEpæµPS±ØóÀjöw2©grQe°Jo^enîE^eîaım²²(3piëxôC.*eq(Õn8ryodi+`¦l&ñù,D°è}q0)Y¹ï[#EU•Dş`4h ¬0pá c±iÆÑú`3vûO^ $MW$+MÌq[c`6íz=/4h
+ª á¨ f¤ T'11m“x;­&ï! 1mD '"`æ1«Ü>Õë÷rqi"da\e>IQI=ÙdétFñnlFrcc©¤ka,Aé4ØEu7"Â>½xö¬Ze,`e!*.s¡ĞEu.p±v)Ï%QVaoM1e'ağ`å©Cq|ãd+eô¦.ËòiZˆ +¨3‹ 0% ¥2m·ìvˆÿ y$wÊI%O`mWw ànvubcd ë4^Sh,¡}ìw5%ÆşX£temıÆùöz&ímrdÎh®}N_v8|Vó:ÒtÀa<macC!vncqmW")a6.PGAú’/>i,~)tje4lü$ÓQy	`(
+­08¡®µ`*)(
+s£øòmcec"kGb VN#SmòqevmİN ( ™0/0 "!h Lovdhap{#‚O,€à© cÁ„é8â%rZ
+€d`0$ %5edOh@T`l3`3(pÔsw|w¡¦…E$knU*TÈy¬Csl2lw%z&vñP3e?YÀì~Peğ·9Iç3´DrouYd%:an×'Ç©h´L9¡a¢~^&p0`1 "  ä¨0ìµ9=2`Y=
+ ! 2 cÀRùGièS,K!Şle#vlìd„nl}nàSp—(nˆáS n&Jy&d³Onâcsûpioæ¸tl¥s 4o@no`s'¨Åqä8ãg.†éëuF)dikx‚Áu t4 Àm! U!e.Deb[1o~h	rblæúAhéaJ".úeé*èg3é@!ô|,<õ'K9nù Maƒ3ëy¢tbC@@ ƒ¡rcaranm2hlJoNDÔ"ÁmJÆ¯4 x  i#ğà!qUdu0t{‚vÉydvor àrcôèc•u"QärT)Gä!)‘< ‘¤@@ 	Uæ0¬s4tg4Z»:/¢M$0: 0$-eÍugåpR=,(` F` ¸aamN-|²n`}×¿¢3‘òCD­îDa$a.O’li4¹?R|Lfr^mr%Oh@Òrj5ãôesZöÓşÍõa.«ocöudj{C/F <!   `0a-=wE-q@ğ->©˜t@  0:š’ )Dxå$[ydìeõiÌ6ahË|AokdçÆjPlu$SY~Ejlwkm<×evàÃƒ!$æ×rZ0­`&z* %`8 À.·{Íe0u:0øè *9Mt}c¥-j2"c°â!n <ÿemre`|lyw5<bRö2xrDvl¶Ò{fI,ü4ı=Y$Q)GåpA°.snpRîv{LGğÃ`F`µesBqÊó%>ul0TØx¤ÛË:ùdwJ]\aìp#<N4ä, d&¡@ y 9pm}bèy®‰;h!*d2` P¨´S!D"á.*=ÚEPduL® è%/Ä`O†"pi¯ÍDbÒ-Cï&€	÷éugF.áøeaÓWf~jëY fm`vEVºI$y rúa5eFqá<Ö#vEooèdhgì‹%( 9BP	¡>EzqX¥Rá¾¬Œ,Ğ"ê <2,/{Oiscuw	ª:„à(zvî¢Eâ¾u“}*R0Zøs0¤E/a#ü#.GLZiÌ),[SvóGrWğj?amÖğíVIf1ÒÓmEú©£a1nöbEvêcqç@!AH5cîAVuW¹@l% *,Œch h(©¨(>kuiiø¸- $ ¬àÁ` D("RV^owcõvc	U èh45Tæm~¥ë#1pl=å@HMdDåz€s%Ga£va&ù¢J¸Ûyzt%Ú.uàp)A<*3]ÀpyóG¬GbMq<f¢ümtS!"s! şzuNKOT`y/ g
+ !t!@`@40 xIréHŒ@°anpiCÊ0®â¨áú)g,!p¬Òâac-DEwJnå &g"xsAã9kò|e)`ox(PePóßlhe/reœ%Uj ùlux ub` £¥ì)/$"¤2 2rLt[à	aFa¤Ep5ä–àÀil}ä`ßF!üc7'1m4	onáíbQEc½Øât@§sgi0!teH½’D¶QíqTLä,d}õ JÓñøÃïe&ä*ÕmÁ3eatí:´;¿qÎF‡oK43mÒ¼³(:& €0 D v@+tae°Fnø)ó|EÄc'St½£D;Cy³|¯mª$å#imcì‚°
+~,cGnqÕnw"jcah y~g%$zgù’'<wi¨Ús%g» æ.j?dh­3æ!uA:×dÓÌiDoü¨óqÙ€`{xicUe“2S798d§tƒ8&DX  9"@`ğ1hè.xvAhått~ep {3D4eD)+kb`Ã´,"SÂudu `x@ ğPruïI¤zÇtm.eåÂ`um0aAÃøsNs‡|%EŒµwVh )P¡|?ŸcñDw(4¥w.¡IR0`§±¡&`£*8¦!lH5. d¬uÑG,":`fÕ>P:Ó}WpeífáÂ Fqh îhÏor¦G0{@ãâ¨yE×ÌbZ{ ldc,!¬08rot-¦gÏo{0'¤,ì+lèF ji×7e$¬ |jiÍzfd `l!0`unCovl,n¹‰à, !l  € @ "ÇùàVYjséef ¹óAí:cB@â7ôXyct'ïT(¨±.QÑhëhId`´m[x.0çv1dôeb&2nd&C`(c©lmç‰î«æ[Ùì¸a²4g66Fo"ğÁjehÎ`T`nw#)¶3ïkáx{¡ra(¨¤À 0d4 &*0`ePà$fgvç`]jp„~qxïã{ ôwüvr|m;iP¯ dtõ8lÇU¨NÂåhekzg%d+ó«mgO+¡{pHióáddMn&d+àt!ltw-/D!,°æ@A4†6¤$ph„  4  0æ5èhwånÖ  àp0e¯`D(à¼›2ãmekÎI6
+¹9! à !p8¯lõ0õrzÎ1(r1b!(íUÍbéë îáıdÑzQy3veO'LUö1Ô.÷	y{*S1uäŞRá2+Ò1NPò|tiâcæÁ|vtácS.Ysoš£mTEInÅ
+Üãt	#.ª ˆV°(b A$ 5 =ÿ{eõªvñ<	€"`P!!  b¢'$0Ã(ÿrírdp;r4dalae¥ìFl}óetàšõ©ŸJ!Lt`Dïfg?f!¸eE!ÓC‡`Y]ILEMŞILY(!dw¬óUacè!VoeòE4RÜeLd şiÍ7G2è
+  °L´(¥)¿-ì}Sc|gur0¨u$'$d¡vêbá[$""g2¡*m}âó²Íe{gˆ5mî±
+duSjw¢•fèI…RôqGkLAiDkK®)¥thef#î)tt RqmRä…Fdejd0c°0ü2(%ê¼#v{tIµ'k¦"}’-bå!ûM+åoiAe&qîmáåï!TvOtdezSÁdpr¡ò‡ffmrüïGayf$sş-°nòhqğÉccÒuL½es câd$G2+gri°e¸M „t"j ¡®   ±ÿqiN!ˆq$Kv_ÖPpc/d%kŒ@ rd cT¨õG6ã>F©0q¬ï>, ı60]ŞôzUT2gk#5su¤ÿY(f+cz Õvá^J~S4e¥ü>"AïÃÖRtÖåa" ,(!,d¨K/àôõ X¡}-&Itag{Skfie¢ø_ öt1Odób"taqÍ¡Rht5jAó`zAdbòx°aA-`c%sªzy¦¯4lCH4­tõêyïA@wyp"`$ t!Dx¯7iıè%’Ãf’48‚$+¨<(®¯mgeÀeb¹Lb/01„°#8eåwRe îQ­åE"HSuçôtu.Ekdi.'.e4q®P>ygs,plüQc÷C…rQeWq-ábP?ÍstpÎuŒl $í"Lö u,in&#æÈgv>tõ]õÕpã!sb:-+¤†(*Ì © M1<s¿uy1sh¿)^é  ,%2à`,:çaö!`Kz8rDt^(ã(âë<…d`]êwiv«w,.f(}qpyåá|b\ qo^}ÎUÅ h!fuoatèD*I;`1SdXnÁâoV"E`Ñ[ä3!^k J` 	d¨ã(I2Ø@R{amüvkãdjEj‘@MÓ$x ¤îr*Êlö]à`=ÏBÆRU}°jS ôÒe2µnv‘lZ°yr=L°`9`dUbi%dP Tq|ùw"óo <÷:pFwì©?C8$EF¢$(Jî"$"`$¬ Vugohíí*EC@tÿòn¢Õkml$Yåax¸8pçõìn30XÄcÄ$b$ñ$óÔ`vl%"GG`1ñaïéfo0/@eÚôi¦|p7‘©D!$mèõehOf0‰
+`H$:²)(b!!!$?cOãémst.:npàáF1òm€píD mWlãm°Ò4Yòëeyúı)Óhì~"qóIb«pdV	gmVqi_ow »N³wf!G.ì¢5ëè¼BsCxc|!`dà·.?p 
+!0B°®ªà" däpH²${÷j/ÎÜò<¢gí fÍczõ`â'FultIrÅmgÉ$×éõX#@_J`. D]a}õusg $wøkdä	#qú1Eq@ to`m¬P6â'lo `EÓõov9"? ²¬2r	! :`¢!(v vh‚`îïdm1áãnpjSbÍb)fjpG.8=Ğ$"`aBb)($(¨à)ó5Í JZ9%#q, 905¤&4<c}c:k’v*d ( ,$ÄE|(û vfKç nnièBpõÌyd¥0I óQ&'Vöm#‚"`oRXqİçr²+ù1ú)cÔA<dÇ…s~/fÒpÛµlurèQUg1qgw¢ôIãc h£dåAOSE&¢ ! 8`"°`XzõAäY8ğÁ V`&5œ3\a¤u&CÏw'wP³î4hsåz`õğ,8thE:ù'¯Bkbê0XhlÛaUfO"q`ÑpÑd`o¢é(tl#[ît#uY$¹tLU4n(,b °« ! € xf?îáo%M.)~qÆor(aoJEtœ‹$iü	7p¤ódoş¬@ôK°oáe,ïz%0cø­¥}tsJçr^)!áaHìñ¬N É¢°ï`"Lb
+c$ívsoavjó? 1 $!!("O'Í`!b­Ÿ²$J:8"$ÕíæNIpa	}céÍKYspD¤Naúcæ>$hvé.RbíCÅ~vE6w1L[öÇUãôcwWRzF¤á£!vB%l[|üÒ~N]7aS(gÑØ#Ô}%7ëy't…)*fcîA6wNïIi*F«nFgk”èVo,R	£ôO¬õ¡es.-›óxñqm(>P`v8kEé)d>Í
+4& 3$¡°";b%<Gf-l ?y<„ & !-§ "¢ xÑ!ŞíóÄG:,$naa#\)RBf·à12órdA“0noge%p2İ4 iGaúa!{¢`gM!ìG!Vz'm)|AY¨àáef·éver8rëõ{Lgn°`á ¸ T0!<)z7Ï÷QÙ>…d`#&à¨l !8z`íai9„-!M]9:ãmîdb^áîn¶®,Y©€oiëdÍBpo®dw$vçeCÒmaî¡~ğI#¾io.$JEo$<%#ê]í:J«"°t  à %+<p©òñK`oácö?/hl.D(erb"h1vg(aë…hWF„úê¨3s(+Q3w$+%{@oÇAL¡\'gAò¥ı2¨‰ , ©` .omI(í0:¥› ‘g7a-a ,Í¥e`t$î"olMn9Wyòp=53&ù¯Ö~dy`z$Wqè‹}r6 ›/ğLvæLm¤m2[Äbr‰ç%ò/I:§A<g”bÃ/mIffÃoXawiyiCo	kysôEí¾”¨ui¦ÍævC6sc+fL¯_É mln…fDVivá¡çò"êaFØs<<Kİ@wl(HÓ7jÆ$~séöa,ò.ò)s‡J}Oo,Gıeanôvï¡WLãÆçE} Fn™1gí›>*26ı!¢"C&±6p 8qqí`aRyã(¨`4  8-% e'q`dí$A¢Kgmì%nshDkÄáf¼ğkUîî({G`l ÒYeun"t‰- `îlæ-ƒu(k‚p`'sb]ÏèY5 Îeäj.   !`  ,"`Q\-p!éiazû;¡!²¢-ƒ r(¥@1,c!Óòl‚ìiıE½!ğ"sé4Çò\qnyf%}". ¼ºoù!4tr$c%*aFawÔ:j#v~q{%fâgmËN5rv.+YM|ÜD^hm6;5xY`ën>â È";  &"(¦B<Sİó!e w}î™"soe-	äp~=jIëşéçt$wrU} nog0.kÅ–;uLv ¿ê(|taçuÏ8C¢ `1`  1¤ fä¼kÄa8a? & g0a"Qd z÷å„g§Yw;+. dy¦p|„ài._x%Cğò`GtjnuvL³1ü à« ’<:oeu%R\
+ x $ 2 88mgm^!r%~£¼d#EŸSChe]+¤dua=!ÿtutv&p=Òoê÷g:/ã!(P~gÖyD!Òc2!i k3/Ãj?NÔ"fo}íio$½S{twL¦äqôùoZ¬s%¢‚rAm&M¶oô)*.aB!'0 £"2¤a4BSzçá=/( 4 ¡‘°!da*’×=5 ­Ñ#_U84;²%(gH"ioEù6xmÀ\+sE'nâ+AgõqCk)xD!in-P(òtñP¯î({iwY‹ G€Q$@(p <Óm/!cren5Ü2SyqõigFD@\0.Wa¬iMN./DWe¯jmÎå"¢;^$fadÄ'`t7mè†aaNdû!ë{*
+ à$bb ` 0$`2W<~Åràòn4çâİÜ9\c;vh¾nöítfpi$Üe6Hjtp4zè ¢ÉaÓ0o/ô€clë¢I)T1sécnö:í%zHuÁV|g7*áàp°( 8è  ¶"mi'i­«<'1à4%1 $b2,ahìr%sYï2î8d<7FÓomâbge)xp'%&eqÃ÷08@t© îb…<2x:3!vx¤,&Ğ vñlfmic~¶ÀbÃ/LEU¢=3¿)4º£âpx,sç5,èübk€pa|[Iª‰w  ¨(" " ©D¼Øõpc@bã`v`„I(wo2-g¥Lm­€,gm$ s2%œ"Á6W{ïx]c~XqtèoEOliY/-E^Oxe"hğ£t¯z¡¾-qO|Òó&¢:Š°¨2&&2$íl[åÏbMR¾ˆ3,TØ9`
+àie­nu´,kwıãSÙz|qé-ÑiÀï(m@Ñè}.WgŸã4¾e®VAÀNô]zm&ŒÁ,zò?c´‹®Bel€j@4aa]å`e8ŞAvtô*ñY»ÂKm.nÁpc;BOkï®T.ÏæPÉ:éíá¾mvÒrBgE>UaDuşk¸yjR+Rg,V¤q!iR|B}fmbV:Ü'!pqaSysvaA­bÀ`9gdY&–B( #%Hš C#"A‹3b%e¥a{h6
+(5f(h$!ôò'$¢31Õ{tÈVdØcÂa3eôQt wû^™‚ÁVå sTğ4|rJ®uuIauåv# co`dieebxga! :Aæ‘c~VnI¢ÍVyuldhJ`Qgp¸Gj4ÍPiºBoBg>T!ô iátco@m$^z EDq!vf ‡:(OZ`  ˜)4¨¶ C141g÷ü7M Zp.¡ ©á$ "°8"b `Œt6fWIÆÀY-1faSpdOcae22u–mgjx¶_AgE5e.~%…`kr`EÿÊ#¡ ²ˆ) i„¢Âi¡ò òï­Oá}á9&zs}aetÍ;]pfÑUha"q{õa”)"KÜ@mdpAweımpğr. /E!vA($ì
+`¼$ 00"(¾4A0}dìGmu="rğlım¨´T,e!iLWmj'Ö´Tèe$2`ÒCJáıgv–½Q`ZÀ%¾/h¨ "ån(¾nu$¹û©Ò:J `0` '`Li:tX(òafe=2\8Pyó"Û-Hb°i.M~hnİº“c¤W¡6–e[.vĞl@2t)4gvS5r÷%sRWÔTÀ$ASlÉ+dávaøÅÆÄ7i4ƒkeû!RQ&hM-¦lWphBiH _'jf¶Bxæelœã-Ji6ä‚Á":àf" $`¾e],c#8|DPa  1  $$ ¨Òaìue\7`DznVitMöõmi'jåcq ncç~ ï2+9c)wm•ãonnection.
+            </summary>
+            <param name="connection"> Connection to find manifest token from. </param>
+            <returns> The provider manifest token for the specified connection. </returns>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlProviderServices.GetDbProviderManifest(System.String)">
+            <summary>
+            Returns the provider manifest by using the specified version information.
+            </summary>
+            <param name="versionHint"> The token information associated with the provider manifest. </param>
+            <returns> The provider manifest by using the specified version information. </returns>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlProviderServices.GetDbSpatialDataReader(System.Data.Common.DbDataReader,System.String)">
+            <summary>
+            Gets a spatial data reader for SQL Server.
+            </summary>
+            <param name="fromReader"> The reader where the spatial data came from. </param>
+            <param name="versionHint"> The manifest token associated with the provider manifest. </param>
+            <returns> The spatial data reader. </returns>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlProviderServices.DbGetSpatialServices(System.String)">
+            <summary>
+            Gets a spatial data reader for SQL Server.
+            </summary>
+            <param name="versionHint"> The manifest token associated with the provider manifest. </param>
+            <returns> The spatial data reader. </returns>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlProviderServices.DbCreateDatabaseScript(System.String,System.Data.Entity.Core.Metadata.Edm.StoreItemCollection)">
+            <summary>
+            Generates a data definition language (DDL) script that creates schema objects 
+            (tables, primary keys, foreign keys) based on the contents of the StoreItemCollection 
+            parameter and targeted for the version of the database corresponding to the provider manifest token.
+            </summary>
+            <param name="providerManifestToken"> The provider manifest token identifying the target version. </param>
+            <param name="storeItemCollection"> The structure of the database. </param>
+            <returns>
+            A DDL script that creates schema objects based on the contents of the StoreItemCollection parameter 
+            and targeted for the version of the database corresponding to the provider manifest token.
+            </returns>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlProviderServices.DbCreateDatabase(System.Data.Common.DbConnection,System.Nullable{System.Int32},System.Data.Entity.Core.Metadata.Edm.StoreItemCollection)">
+            <summary>
+            Create the database and the database objects.
+            If initial catalog is not specified, but AttachDBFilename is specified, we generate a random database name based on the AttachDBFilename.
+            Note: this causes pollution of the db, as when the connection string is later used, the mdf will get attached under a different name.
+            However if we try to replicate the name under which it would be attached, the following scenario would fail:
+            The file does not exist, but registered with database.
+            The user calls:  If (DatabaseExists) DeleteDatabase
+            CreateDatabase
+            For further details on the behavior when AttachDBFilename is specified see Dev10# 188936
+            </summary>
+            <param name="connection">Connection to a non-existent database that needs to be created and populated with the store objects indicated with the storeItemCollection parameter.</param>
+            <param name="commandTimeout">Execution timeout for any commands needed to create the database.</param>
+            <param name="storeItemCollection">The collection of all store items based on which the script should be created.</param>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlProviderServices.DbDatabaseExists(System.Data.Common.DbConnection,System.Nullable{System.Int32},System.Data.Entity.Core.Metadata.Edm.StoreItemCollection)">
+            <summary>
+            Determines whether the database for the given connection exists.
+            There are three cases:
+            1.  Initial Catalog = X, AttachDBFilename = null:   (SELECT Count(*) FROM sys.databases WHERE [name]= X) > 0
+            2.  Initial Catalog = X, AttachDBFilename = F:      if (SELECT Count(*) FROM sys.databases WHERE [name]= X) > 0 then <c>true</c>,
+            if not, try to open the connection and then return (SELECT Count(*) FROM sys.databases WHERE [name]= X) > 0
+            3.  Initial Catalog = null, AttachDBFilename = F:   Try to open the connection. If that succeeds the result is true, otherwise
+            if the there are no databases corresponding to the given file return <c>false</c>, otherwise throw.
+            Note: We open the connection to cover the scenario when the mdf exists, but is not attached.
+            Given that opening the connection would auto-attach it, it would not be appropriate to return <c>false</c> in this case.
+            Also note that checking for the existence of the file does not work for a remote server.  (Dev11 #290487)
+            For further details on the behavior when AttachDBFilename is specified see Dev10# 188936
+            </summary>
+            <param name="connection">Connection to a database whose existence is checked by this method.</param>
+            <param name="commandTimeout">Execution timeout for any commands needed to determine the existence of the database.</param>
+            <param name="storeItemCollection">The collection of all store items from the model. This parameter is no longer used for determining database existence.</param>
+            <returns>True if the provider can deduce the database only based on the connection.</returns>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlProviderServices.DbDatabaseExists(System.Data.Common.DbConnection,System.Nullable{System.Int32},System.Lazy{System.Data.Entity.Core.Metadata.Edm.StoreItemCollection})">
+            <summary>
+            Determines whether the database for the given connection exists.
+            There are three cases:
+            1.  Initial Catalog = X, AttachDBFilename = null:   (SELECT Count(*) FROM sys.databases WHERE [name]= X) > 0
+            2.  Initial Catalog = X, AttachDBFilename = F:      if (SELECT Count(*) FROM sys.databases WHERE [name]= X) > 0 then <c>true</c>,
+            if not, try to open the connection and then return (SELECT Count(*) FROM sys.databases WHERE [name]= X) > 0
+            3.  Initial Catalog = null, AttachDBFilename = F:   Try to open the connection. If that succeeds the result is true, otherwise
+            if the there are no databases corresponding to the given file return <c>false</c>, otherwise throw.
+            Note: We open the connection to cover the scenario when the mdf exists, but is not attached.
+            Given that opening the connection would auto-attach it, it would not be appropriate to return <c>false</c> in this case.
+            Also note that checking for the existence of the file does not work for a remote server.  (Dev11 #290487)
+            For further details on the behavior when AttachDBFilename is specified see Dev10# 188936
+            </summary>
+            <param name="connection">Connection to a database whose existence is checked by this method.</param>
+            <param name="commandTimeout">Execution timeout for any commands needed to determine the existence of the database.</param>
+            <param name="storeItemCollection">The collection of all store items from the model. This parameter is no longer used for determining database existence.</param>
+            <returns>True if the provider can deduce the database only based on the connection.</returns>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlProviderServices.DbDeleteDatabase(System.Data.Common.DbConnection,System.Nullable{System.Int32},System.Data.Entity.Core.Metadata.Edm.StoreItemCollection)">
+            <summary>
+            Delete the database for the given connection.
+            There are three cases:
+            1.  If Initial Catalog is specified (X) drop database X
+            2.  Else if AttachDBFilename is specified (F) drop all the databases corresponding to F
+            if none throw
+            3.  If niether the catalog not the file name is specified - throw
+            Note that directly deleting the files does not work for a remote server.  However, even for not attached
+            databases the current logic would work assuming the user does: if (DatabaseExists) DeleteDatabase
+            </summary>
+            <param name="connection"> Connection </param>
+            <param name="commandTimeout"> Timeout for internal commands. </param>
+            <param name="storeItemCollection"> Item Collection. </param>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlProviderServices.CloneDbConnection(System.Data.Common.DbConnection,System.Data.Common.DbProviderFactory)">
+            <summary>
+            Clones the connection.
+            </summary>
+            <param name="connection">The original connection.</param>
+            <param name="factory">The factory to use.</param>
+            <returns>Cloned connection</returns>
+        </member>
+        <member name="T:System.Data.Entity.SqlServer.SqlServerMigrationSqlGenerator">
+            <summary>
+            Provider to convert provider agnostic migration operations into SQL commands
+            that can be run against a Microsoft SQL Server database.
+            </summary>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlServerMigrationSqlGenerator.IsPermissionDeniedError(System.Exception)">
+            <summary>
+            Determines if a provider specific exception corresponds to a database-level permission denied error.
+            </summary>
+            <param name="exception">The database exception.</param>
+            <returns> true if the supplied exception corresponds to a database-level permission denied error; otherwise false. </returns>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlServerMigrationSqlGenerator.Generate(System.Collections.Generic.IEnumerable{System.Data.Entity.Migrations.Model.MigrationOperation},System.String)">
+            <summary>
+            Converts a set of migration operations into Microsoft SQL Server specific SQL.
+            </summary>
+            <param name="migrationOperations"> The operations to be converted. </param>
+            <param name="providerManifestToken"> Token representing the version of SQL Server being targeted (i.e. "2005", "2008"). </param>
+            <returns> A list of SQL statements to be executed to perform the migration operations. </returns>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlServerMigrationSqlGenerator.GenerateProcedureBody(System.Collections.Generic.ICollection{System.Data.Entity.Core.Common.CommandTrees.DbModificationCommandTree},System.String,System.String)">
+            <summary>
+            Generates the SQL body for a stored procedure.
+            </summary>
+            <param name="commandTrees">The command trees representing the commands for an insert, update or delete operation.</param>
+            <param name="rowsAffectedParameter">The rows affected parameter name.</param>
+            <param name="providerManifestToken">The provider manifest token.</param>
+            <returns>The SQL body for the stored procedure.</returns>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlServerMigrationSqlGenerator.Generate(System.Data.Entity.Migrations.Model.UpdateDatabaseOperation)">
+            <summary>
+            Generates the specified update database operation which represents applying a series of migrations.
+            The generated script is idempotent, meaning it contains conditional logic to check if individual migrations 
+            have already been applied and only apply the pending ones.
+            </summary>
+            <param name="updateDatabaseOperation">The update database operation.</param>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlServerMigrationSqlGenerator.Generate(System.Data.Entity.Migrations.Model.MigrationOperation)">
+            <summary>
+            Generates SQL for a <see cref="T:System.Data.Entity.Migrations.Model.MigrationOperation" />.
+            Allows derived providers to handle additional operation types.
+            Generated SQL should be added using the Statement method.
+            </summary>
+            <param name="migrationOperation"> The operation to produce SQL for. </param>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlServerMigrationSqlGenerator.CreateConnection">
+            <summary>
+            Creates an empty connection for the current provider.
+            Allows derived providers to use connection other than <see cref="T:System.Data.SqlClient.SqlConnection" />.
+            </summary>
+            <returns> An empty connection for the current provider. </returns>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlServerMigrationSqlGenerator.Generate(System.Data.Entity.Migrations.Model.CreateProcedureOperation)">
+            <summary>
+            Generates the specified create procedure operation.
+            </summary>
+            <param name="createProcedureOperation">The create procedure operation.</param>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlServerMigrationSqlGenerator.Generate(System.Data.Entity.Migrations.Model.AlterProcedureOperation)">
+            <summary>
+            Generates the specified alter procedure operation.
+            </summary>
+            <param name="alterProcedureOperation">The alter procedure operation.</param>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlServerMigrationSqlGenerator.Generate(System.Data.Entity.Migrations.Model.DropProcedureOperation)">
+            <summary>
+            Generates the specified drop procedure operation.
+            </summary>
+            <param name="dropProcedureOperation">The drop procedure operation.</param>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlServerMigrationSqlGenerator.Generate(System.Data.Entity.Migrations.Model.CreateTableOperation)">
+            <summary>
+            Generates SQL for a <see cref="T:System.Data.Entity.Migrations.Model.CreateTableOperation" />. This method differs from
+            <see cref="M:System.Data.Entity.SqlServer.SqlServerMigrationSqlGenerator.WriteCreateTable(System.Data.Entity.Migrations.Model.CreateTableOperation)" /> in that it will
+            create the target database schema if it does not already exist.
+            Generated SQL should be added using the Statement method.
+            </summary>
+            <param name="createTableOperation"> The operation to produce SQL for. </param>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlServerMigrationSqlGenerator.WriteCreateTable(System.Data.Entity.Migrations.Model.CreateTableOperation)">
+            <summary>
+            Generates SQL for a <see cref="T:System.Data.Entity.Migrations.Model.CreateTableOperation" />.
+            Generated SQL should be added using the Statement method.
+            </summary>
+            <param name="createTableOperation"> The operation to produce SQL for. </param>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlServerMigrationSqlGenerator.WriteCreateTable(System.Data.Entity.Migrations.Model.CreateTableOperation,System.Data.Entity.Migrations.Utilities.IndentedTextWriter)">
+            <summary>
+            Writes CREATE TABLE SQL to the target writer.
+            </summary>
+            <param name="createTableOperation"> The operation to produce SQL for. </param>
+            <param name="writer"> The target writer. </param>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlServerMigrationSqlGenerator.Generate(System.Data.Entity.Migrations.Model.AlterTableOperation)">
+            <summary>
+            Override this method to generate SQL when the definition of a table or its attributes are changed.
+            The default implementation of this method does nothing.
+            </summary>
+            <param name="alterTableOperation"> The operation describing changes to the table. </param>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlServerMigrationSqlGenerator.GenerateMakeSystemTable(System.Data.Entity.Migrations.Model.CreateTableOperation,System.Data.Entity.Migrations.Utilities.IndentedTextWriter)">
+            <summary>
+            Generates SQL to mark a table as a system table.
+            Generated SQL should be added using the Statement method.
+            </summary>
+            <param name="createTableOperation"> The table to mark as a system table. </param>
+            <param name="writer"> The <see cref='T:System.Data.Entity.Migrations.Utilities.IndentedTextWriter' /> to write the generated SQL to. </param>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlServerMigrationSqlGenerator.GenerateCreateSchema(System.String)">
+            <summary>
+            Generates SQL to create a database schema.
+            Generated SQL should be added using the Statement method.
+            </summary>
+            <param name="schema"> The name of the schema to create. </param>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlServerMigrationSqlGenerator.Generate(System.Data.Entity.Migrations.Model.AddForeignKeyOperation)">
+            <summary>
+            Generates SQL for a <see cref="T:System.Data.Entity.Migrations.Model.AddForeignKeyOperation" />.
+            Generated SQL should be added using the Statement method.
+            </summary>
+            <param name="addForeignKeyOperation"> The operation to produce SQL for. </param>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlServerMigrationSqlGenerator.Generate(System.Data.Entity.Migrations.Model.DropForeignKeyOperation)">
+            <summary>
+            Generates SQL for a <see cref="T:System.Data.Entity.Migrations.Model.DropForeignKeyOperation" />.
+            Generated SQL should be added using the Statement method.
+            </summary>
+            <param name="dropForeignKeyOperation"> The operation to produce SQL for. </param>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlServerMigrationSqlGenerator.Generate(System.Data.Entity.Migrations.Model.CreateIndexOperation)">
+            <summary>
+            Generates SQL for a <see cref="T:System.Data.Entity.Migrations.Model.CreateIndexOperation" />.
+            Generated SQL should be added using the Statement method.
+            </summary>
+            <param name="createIndexOperation"> The operation to produce SQL for. </param>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlServerMigrationSqlGenerator.Generate(System.Data.Entity.Migrations.Model.DropIndexOperation)">
+            <summary>
+            Generates SQL for a <see cref="T:System.Data.Entity.Migrations.Model.DropIndexOperation" />.
+            Generated SQL should be added using the Statement method.
+            </summary>
+            <param name="dropIndexOperation"> The operation to produce SQL for. </param>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlServerMigrationSqlGenerator.Generate(System.Data.Entity.Migrations.Model.AddPrimaryKeyOperation)">
+            <summary>
+            Generates SQL for a <see cref="T:System.Data.Entity.Migrations.Model.AddPrimaryKeyOperation" />.
+            Generated SQL should be added using the Statement method.
+            </summary>
+            <param name="addPrimaryKeyOperation"> The operation to produce SQL for. </param>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlServerMigrationSqlGenerator.Generate(System.Data.Entity.Migrations.Model.DropPrimaryKeyOperation)">
+            <summary>
+            Generates SQL for a <see cref="T:System.Data.Entity.Migrations.Model.DropPrimaryKeyOperation" />.
+            Generated SQL should be added using the Statement method.
+            </summary>
+            <param name="dropPrimaryKeyOperation"> The operation to produce SQL for. </param>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlServerMigrationSqlGenerator.Generate(System.Data.Entity.Migrations.Model.AddColumnOperation)">
+            <summary>
+            Generates SQL for a <see cref="T:System.Data.Entity.Migrations.Model.AddColumnOperation" />.
+            Generated SQL should be added using the Statement method.
+            </summary>
+            <param name="addColumnOperation"> The operation to produce SQL for. </param>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlServerMigrationSqlGenerator.Generate(System.Data.Entity.Migrations.Model.DropColumnOperation)">
+            <summary>
+            Generates SQL for a <see cref="T:System.Data.Entity.Migrations.Model.DropColumnOperation" />.
+            Generated SQL should be added using the Statement method.
+            </summary>
+            <param name="dropColumnOperation"> The operation to produce SQL for. </param>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlServerMigrationSqlGenerator.Generate(System.Data.Entity.Migrations.Model.AlterColumnOperation)">
+            <summary>
+            Generates SQL for a <see cref="T:System.Data.Entity.Migrations.Model.AlterColumnOperation" />.
+            Generated SQL should be added using the Statement method.
+            </summary>
+            <param name="alterColumnOperation"> The operation to produce SQL for. </param>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlServerMigrationSqlGenerator.DropDefaultConstraint(System.String,System.String,System.Data.Entity.Migrations.Utilities.IndentedTextWriter)">
+            <summary>
+            Call this method to generate SQL that will attempt to drop the default constraint created
+            when a column is created. This method is usually called by code that overrides the creation or
+            altering of columns.
+            </summary>
+            <param name="table">The table to which the constraint applies.</param>
+            <param name="column">The column to which the constraint applies.</param>
+            <param name="writer">The writer to which generated SQL should be written.</param>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlServerMigrationSqlGenerator.Generate(System.Data.Entity.Migrations.Model.DropTableOperation)">
+            <summary>
+            Generates SQL for a <see cref="T:System.Data.Entity.Migrations.Model.DropTableOperation" />.
+            Generated SQL should be added using the Statement method.
+            </summary>
+            <param name="dropTableOperation"> The operation to produce SQL for. </param>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlServerMigrationSqlGenerator.Generate(System.Data.Entity.Migrations.Model.SqlOperation)">
+            <summary>
+            Generates SQL for a <see cref="T:System.Data.Entity.Migrations.Model.SqlOperation" />.
+            Generated SQL should be added using the Statement or StatementBatch methods.
+            </summary>
+            <param name="sqlOperation"> The operation to produce SQL for. </param>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlServerMigrationSqlGenerator.Generate(System.Data.Entity.Migrations.Model.RenameColumnOperation)">
+            <summary>
+            Generates SQL for a <see cref="T:System.Data.Entity.Migrations.Model.RenameColumnOperation" />.
+            Generated SQL should be added using the Statement method.
+            </summary>
+            <param name="renameColumnOperation"> The operation to produce SQL for. </param>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlServerMigrationSqlGenerator.Generate(System.Data.Entity.Migrations.Model.RenameIndexOperation)">
+            <summary>
+            Generates SQL for a <see cref="T:System.Data.Entity.Migrations.Model.RenameIndexOperation" />.
+            Generated SQL should be added using the Statement method.
+            </summary>
+            <param name="renameIndexOperation"> The operation to produce SQL for. </param>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlServerMigrationSqlGenerator.Generate(System.Data.Entity.Migrations.Model.RenameTableOperation)">
+            <summary>
+            Generates SQL for a <see cref="T:System.Data.Entity.Migrations.Model.RenameTableOperation" />.
+            Generated SQL should be added using the Statement method.
+            </summary>
+            <param name="renameTableOperation"> The operation to produce SQL for. </param>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlServerMigrationSqlGenerator.Generate(System.Data.Entity.Migrations.Model.RenameProcedureOperation)">
+            <summary>
+            Generates the specified rename procedure operation.
+            </summary>
+            <param name="renameProcedureOperation">The rename procedure operation.</param>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlServerMigrationSqlGenerator.Generate(System.Data.Entity.Migrations.Model.MoveProcedureOperation)">
+            <summary>
+            Generates the specified move procedure operation.
+            </summary>
+            <param name="moveProcedureOperation">The move procedure operation.</param>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlServerMigrationSqlGenerator.Generate(System.Data.Entity.Migrations.Model.MoveTableOperation)">
+            <summary>
+            Generates SQL for a <see cref="T:System.Data.Entity.Migrations.Model.MoveTableOperation" />.
+            Generated SQL should be added using the Statement method.
+            </summary>
+            <param name="moveTableOperation"> The operation to produce SQL for. </param>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlServerMigrationSqlGenerator.Generate(System.Data.Entity.Migrations.Model.ColumnModel,System.Data.Entity.Migrations.Utilities.IndentedTextWriter)">
+            <summary>
+            Generates SQL for the given column model. This method is called by other methods that
+            process columns and can be overridden to change the SQL generated.
+            </summary>
+            <param name="column">The column for which SQL is being generated.</param>
+            <param name="writer">The writer to which generated SQL should be written.</param>
+        </member>
+        <member name="P:System.Data.Entity.SqlServer.SqlServerMigrationSqlGenerator.GuidColumnDefault">
+            <summary>
+            Returns the column default value to use for store-generated GUID columns when
+            no default value is explicitly specified in the migration.
+            Returns newsequentialid() for on-premises SQL Server 2005 and later.
+            Returns newid() for SQL Azure.
+            </summary>
+            <value>Either newsequentialid() or newid() as described above.</value>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlServerMigrationSqlGenerator.Generate(System.Data.Entity.Migrations.Model.HistoryOperation)">
+            <summary>
+            Generates SQL for a <see cref="T:System.Data.Entity.Migrations.Model.HistoryOperation" />.
+            Generated SQL should be added using the Statement method.
+            </summary>
+            <param name="historyOperation"> The operation to produce SQL for. </param>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlServerMigrationSqlGenerator.Generate(System.Byte[])">
+            <summary>
+            Generates SQL to specify a constant byte[] default value being set on a column.
+            This method just generates the actual value, not the SQL to set the default value.
+            </summary>
+            <param name="defaultValue"> The value to be set. </param>
+            <returns> SQL representing the default value. </returns>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlServerMigrationSqlGenerator.Generate(System.Boolean)">
+            <summary>
+            Generates SQL to specify a constant bool default value being set on a column.
+            This method just generates the actual value, not the SQL to set the default value.
+            </summary>
+            <param name="defaultValue"> The value to be set. </param>
+            <returns> SQL representing the default value. </returns>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlServerMigrationSqlGenerator.Generate(System.DateTime)">
+            <summary>
+            Generates SQL to specify a constant DateTime default value being set on a column.
+            This method just generates the actual value, not the SQL to set the default value.
+            </summary>
+            <param name="defaultValue"> The value to be set. </param>
+            <returns> SQL representing the default value. </returns>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlServerMigrationSqlGenerator.Generate(System.DateTimeOffset)">
+            <summary>
+            Generates SQL to specify a constant DateTimeOffset default value being set on a column.
+            This method just generates the actual value, not the SQL to set the default value.
+            </summary>
+            <param name="defaultValue"> The value to be set. </param>
+            <returns> SQL representing the default value. </returns>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlServerMigrationSqlGenerator.Generate(System.Guid)">
+            <summary>
+            Generates SQL to specify a constant Guid default value being set on a column.
+            This method just generates the actual value, not the SQL to set the default value.
+            </summary>
+            <param name="defaultValue"> The value to be set. </param>
+            <returns> SQL representing the default value. </returns>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlServerMigrationSqlGenerator.Generate(System.String)">
+            <summary>
+            Generates SQL to specify a constant string default value being set on a column.
+            This method just generates the actual value, not the SQL to set the default value.
+            </summary>
+            <param name="defaultValue"> The value to be set. </param>
+            <returns> SQL representing the default value. </returns>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlServerMigrationSqlGenerator.Generate(System.TimeSpan)">
+            <summary>
+            Generates SQL to specify a constant TimeSpan default value being set on a column.
+            This method just generates the actual value, not the SQL to set the default value.
+            </summary>
+            <param name="defaultValue"> The value to be set. </param>
+            <returns> SQL representing the default value. </returns>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlServerMigrationSqlGenerator.Generate(System.Data.Entity.Hierarchy.HierarchyId)">
+            <summary>
+            Generates SQL to specify a constant hierarchyid default value being set on a column.
+            This method just generates the actual value, not the SQL to set the default value.
+            </summary>
+            <param name="defaultValue"> The value to be set. </param>
+            <returns> SQL representing the default value. </returns>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlServerMigrationSqlGenerator.Generate(System.Data.Entity.Spatial.DbGeography)">
+            <summary>
+            Generates SQL to specify a constant geogrpahy default value being set on a column.
+            This method just generates the actual value, not the SQL to set the default value.
+            </summary>
+            <param name="defaultValue"> The value to be set. </param>
+            <returns> SQL representing the default value. </returns>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlServerMigrationSqlGenerator.Generate(System.Data.Entity.Spatial.DbGeometry)">
+            <summary>
+            Generates SQL to specify a constant geometry default value being set on a column.
+            This method just generates the actual value, not the SQL to set the default value.
+            </summary>
+            <param name="defaultValue"> The value to be set. </param>
+            <returns> SQL representing the default value. </returns>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlServerMigrationSqlGenerator.Generate(System.Object)">
+            <summary>
+            Generates SQL to specify a constant default value being set on a column.
+            This method just generates the actual value, not the SQL to set the default value.
+            </summary>
+            <param name="defaultValue"> The value to be set. </param>
+            <returns> SQL representing the default value. </returns>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlServerMigrationSqlGenerator.BuildColumnType(System.Data.Entity.Migrations.Model.ColumnModel)">
+            <summary>
+            Generates SQL to specify the data type of a column.
+            This method just generates the actual type, not the SQL to create the column.
+            </summary>
+            <param name="columnModel"> The definition of the column. </param>
+            <returns> SQL representing the data type. </returns>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlServerMigrationSqlGenerator.Name(System.String)">
+            <summary>
+            Generates a quoted name. The supplied name may or may not contain the schema.
+            </summary>
+            <param name="name"> The name to be quoted. </param>
+            <returns> The quoted name. </returns>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlServerMigrationSqlGenerator.Quote(System.String)">
+            <summary>
+            Quotes an identifier for SQL Server.
+            </summary>
+            <param name="identifier"> The identifier to be quoted. </param>
+            <returns> The quoted identifier. </returns>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlServerMigrationSqlGenerator.Statement(System.String,System.Boolean,System.String)">
+            <summary>
+            Adds a new Statement to be executed against the database.
+            </summary>
+            <param name="sql"> The statement to be executed. </param>
+            <param name="suppressTransaction"> Gets or sets a value indicating whether this statement should be performed outside of the transaction scope that is used to make the migration process transactional. If set to true, this operation will not be rolled back if the migration process fails. </param>
+            <param name="batchTerminator">The batch terminator for the database provider.</param>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlServerMigrationSqlGenerator.Writer">
+            <summary>
+            Gets a new <see cref="T:System.Data.Entity.Migrations.Utilities.IndentedTextWriter" /> that can be used to build SQL.
+            This is just a helper method to create a writer. Writing to the writer will
+            not cause SQL to be registered for execution. You must pass the generated
+            SQL to the Statement method.
+            </summary>
+            <returns> An empty text writer to use for SQL generation. </returns>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlServerMigrationSqlGenerator.Statement(System.Data.Entity.Migrations.Utilities.IndentedTextWriter,System.String)">
+            <summary>
+            Adds a new Statement to be executed against the database.
+            </summary>
+            <param name="writer"> The writer containing the SQL to be executed. </param>
+            <param name="batchTerminator">The batch terminator for the database provider.</param>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlServerMigrationSqlGenerator.StatementBatch(System.String,System.Boolean)">
+            <summary>
+            Breaks sql string into one or more statements, handling T-SQL utility statements as necessary.
+            </summary>
+            <param name="sqlBatch"> The SQL to split into one ore more statements to be executed. </param>
+            <param name="suppressTransaction"> Gets or sets a value indicating whether this statement should be performed outside of the transaction scope that is used to make the migration process transactional. If set to true, this operation will not be rolled back if the migration process fails. </param>
+        </member>
+        <member name="T:System.Data.Entity.SqlServer.SqlSpatialFunctions">
+            <summary>
+            Contains function stubs that expose SqlServer methods in Linq to Entities.
+            </summary>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlSpatialFunctions.PointGeography(System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Int32})">
+            <summary>Constructs a geography instance representing a Point instance from its x and y values and a spatial reference ID (SRID). </summary>
+            <returns>The constructed geography instance.</returns>
+            <param name="latitude">The x-coordinate of the Point being generated.</param>
+            <param name="longitude">The y-coordinate of the Point being generated</param>
+            <param name="spatialReferenceId">The SRID of the geography instance.</param>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlSpatialFunctions.AsTextZM(System.Data.Entity.Spatial.DbGeography)">
+            <summary>Returns the Open Geospatial Consortium (OGC) Well-Known Text (WKT) representation of a geography instance augmented with any Z (elevation) and M (measure) values carried by the instance.</summary>
+            <returns>The Open Geospatial Consortium (OGC) Well-Known Text (WKT) representation of a geography instance.</returns>
+            <param name="geographyValue">The geography value.</param>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlSpatialFunctions.BufferWithTolerance(System.Data.Entity.Spatial.DbGeography,System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Boolean})">
+            <summary>Returns a geometric object representing the union of all point values whose distance from a geography instance is less than or equal to a specified value, allowing for a specified tolerance.</summary>
+            <returns>The union of all point values whose distance from a geography instance is less than or equal to a specified value</returns>
+            <param name="geographyValue">The geography value.</param>
+            <param name="distance">The distance.</param>
+            <param name="tolerance">The specified tolerance.</param>
+            <param name="relative">Specifying whether the tolerance value is relative or absolute.</param>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlSpatialFunctions.EnvelopeAngle(System.Data.Entity.Spatial.DbGeography)">
+            <summary>Returns the maximum angle between the point returned by EnvelopeCenter() and a point in the geography instance in degrees.</summary>
+            <returns>the maximum angle between the point returned by EnvelopeCenter().</returns>
+            <param name="geographyValue">The geography value.</param>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlSpatialFunctions.EnvelopeCenter(System.Data.Entity.Spatial.DbGeography)">
+            <summary>Returns a point that can be used as the center of a bounding circle for the geography instance.</summary>
+            <returns>A SqlGeography value that specifies the location of the center of a bounding circle.</returns>
+            <param name="geographyValue">The geography value.</param>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlSpatialFunctions.Filter(System.Data.Entity.Spatial.DbGeography,System.Data.Entity.Spatial.DbGeography)">
+            <summary>Offers a fast, index-only intersection method to determine if a geography instance intersects another SqlGeography instance, assuming an index is available.</summary>
+            <returns>True if a geography instance potentially intersects another SqlGeography instance; otherwise, false.</returns>
+            <param name="geographyValue">The geography value.</param>
+            <param name="geographyOther">Another geography instance to compare against the instance on which Filter is invoked.</param>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlSpatialFunctions.InstanceOf(System.Data.Entity.Spatial.DbGeography,System.String)">
+            <summary>Tests if the SqlGeography instance is the same as the specified type.</summary>
+            <returns>A string that specifies one of the 12 types exposed in the geography type hierarchy.</returns>
+            <param name="geographyValue">The geography value.</param>
+            <param name="geometryTypeName">A string that specifies one of the 12 types exposed in the geography type hierarchy.</param>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlSpatialFunctions.NumRings(System.Data.Entity.Spatial.DbGeography)">
+            <summary>Returns the total number of rings in a Polygon instance.</summary>
+            <returns>The total number of rings.</returns>
+            <param name="geographyValue">The geography value.</param>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlSpatialFunctions.Reduce(System.Data.Entity.Spatial.DbGeography,System.Nullable{System.Double})">
+            <summary>Returns an approximation of the given geography instance produced by running the Douglas-Peucker algorithm on the instance with the given tolerance.</summary>
+            <returns>
+            Returns <see cref="T:System.Data.Entity.Spatial.DbGeography" />.
+            </returns>
+            <param name="geographyValue">The geography value.</param>
+            <param name="tolerance">The tolerance to input to the Douglas-Peucker algorithm. tolerance must be a positive number.</param>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlSpatialFunctions.RingN(System.Data.Entity.Spatial.DbGeography,System.Nullable{System.Int32})">
+            <summary>Returns the specified ring of the SqlGeography instance: 1 â‰¤ n â‰¤ NumRings().</summary>
+            <returns>A SqlGeography object that represents the ring specified by n.</returns>
+            <param name="geographyValue">The geography value.</param>
+            <param name="index">An int expression between 1 and the number of rings in a polygon instance.</param>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlSpatialFunctions.PointGeometry(System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Int32})">
+            <summary>Constructs a geometry instance representing a Point instance from its x and y values and a spatial reference ID (SRID). </summary>
+            <returns>The constructed geometry instance.</returns>
+            <param name="xCoordinate">The x-coordinate of the Point being generated.</param>
+            <param name="yCoordinate">The y-coordinate of the Point being generated</param>
+            <param name="spatialReferenceId">The SRID of the geography instance.</param>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlSpatialFunctions.AsTextZM(System.Data.Entity.Spatial.DbGeometry)">
+            <summary>Returns the Open Geospatial Consortium (OGC) Well-Known Text (WKT) representation of a geography instance augmented with any Z (elevation) and M (measure) values carried by the instance.</summary>
+            <returns>The Open Geospatial Consortium (OGC) Well-Known Text (WKT) representation of a geometry instance.</returns>
+            <param name="geometryValue">The geometry value.</param>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlSpatialFunctions.BufferWithTolerance(System.Data.Entity.Spatial.DbGeometry,System.Nullable{System.Double},System.Nullable{System.Double},System.Nullable{System.Boolean})">
+            <summary>Returns a geometric object representing the union of all point values whose distance from a geometry instance is less than or equal to a specified value, allowing for a specified tolerance.</summary>
+            <returns>The union of all point values whose distance from a geometry instance is less than or equal to a specified value</returns>
+            <param name="geometryValue">The geometry value.</param>
+            <param name="distance">The distance.</param>
+            <param name="tolerance">The specified tolerance.</param>
+            <param name="relative">Specifying whether the tolerance value is relative or absolute.</param>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlSpatialFunctions.InstanceOf(System.Data.Entity.Spatial.DbGeometry,System.String)">
+            <summary>Tests if the SqlGeometry instance is the same as the specified type.</summary>
+            <returns>A string that specifies one of the 12 types exposed in the geography type hierarchy.</returns>
+            <param name="geometryValue">The geometry value.</param>
+            <param name="geometryTypeName">A string that specifies one of the 12 types exposed in the geography type hierarchy.</param>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlSpatialFunctions.Filter(System.Data.Entity.Spatial.DbGeometry,System.Data.Entity.Spatial.DbGeometry)">
+            <summary>Offers a fast, index-only intersection method to determine if a geography instance intersects another SqlGeometry instance, assuming an index is available.</summary>
+            <returns>True if a geography instance potentially intersects another SqlGeography instance; otherwise, false.</returns>
+            <param name="geometryValue">The geometry value.</param>
+            <param name="geometryOther">Another geography instance to compare against the instance on which Filter is invoked.</param>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlSpatialFunctions.MakeValid(System.Data.Entity.Spatial.DbGeometry)">
+            <summary>Converts an invalid geometry instance into a geometry instance with a valid Open Geospatial Consortium (OGC) type. </summary>
+            <returns>The converted geometry instance.</returns>
+            <param name="geometryValue">The geometry value.</param>
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlSpatialFunctions.Reduce(System.Data.Entity.Spatial.DbGeometry,System.Nullable{System.Double})">
+            <summary>Returns an approximation of the given geography instance produced by running the Douglas-Peucker algorithm on the instance with the given tolerance.</summary>
+            <returns>
+            Returns <see cref="T:System.Data.Entity.Spatial.DbGeometry" />.
+            </returns>
+            <param name="geometryValue">The geometry value.</param>
+            <param name="tolerance">The tolerance to input to the Douglas-Peucker algorithm. tolerance must be a positive number.</param>
+        </member>
+        <member name="T:System.Data.Entity.SqlServer.SqlSpatialServices">
+            <summary>
+            An implementation of <see cref="T:System.Data.Entity.Spatial.DbSpatialServices"/> to provide support for geospatial types when using
+            Entity Framework with Microsoft SQL Server.
+            </summary>
+        </member>
+        <member name="P:System.Data.Entity.SqlServer.SqlSpatialServices.NativeTypesAvailable">
+            <inheritdoc />
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlSpatialServices.CreateProviderValue(System.Data.Entity.Spatial.DbGeographyWellKnownValue)">
+            <inheritdoc />
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlSpatialServices.GeographyFromProviderValue(System.Object)">
+            <inheritdoc />
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlSpatialServices.CreateWellKnownValue(System.Data.Entity.Spatial.DbGeography)">
+            <inheritdoc />
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlSpatialServices.CreateProviderValue(System.Data.Entity.Spatial.DbGeometryWellKnownValue)">
+            <inheritdoc />
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlSpatialServices.GeometryFromProviderValue(System.Object)">
+            <inheritdoc />
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlSpatialServices.CreateWellKnownValue(System.Data.Entity.Spatial.DbGeometry)">
+            <inheritdoc />
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlSpatialServices.AsTextIncludingElevationAndMeasure(System.Data.Entity.Spatial.DbGeography)">
+            <inheritdoc />
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlSpatialServices.AsTextIncludingElevationAndMeasure(System.Data.Entity.Spatial.DbGeometry)">
+            <inheritdoc />
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlSpatialServices.GeographyFromText(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlSpatialServices.GeographyFromText(System.String,System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlSpatialServices.GeographyPointFromText(System.String,System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlSpatialServices.GeographyLineFromText(System.String,System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlSpatialServices.GeographyPolygonFromText(System.String,System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlSpatialServices.GeographyMultiPointFromText(System.String,System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlSpatialServices.GeographyMultiLineFromText(System.String,System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlSpatialServices.GeographyMultiPolygonFromText(System.String,System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlSpatialServices.GeographyCollectionFromText(System.String,System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlSpatialServices.GeographyFromBinary(System.Byte[],System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlSpatialServices.GeographyFromBinary(System.Byte[])">
+            <inheritdoc />
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlSpatialServices.GeographyPointFromBinary(System.Byte[],System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlSpatialServices.GeographyLineFromBinary(System.Byte[],System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlSpatialServices.GeographyPolygonFromBinary(System.Byte[],System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlSpatialServices.GeographyMultiPointFromBinary(System.Byte[],System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlSpatialServices.GeographyMultiLineFromBinary(System.Byte[],System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlSpatialServices.GeographyMultiPolygonFromBinary(System.Byte[],System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlSpatialServices.GeographyCollectionFromBinary(System.Byte[],System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlSpatialServices.GeographyFromGml(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlSpatialServices.GeographyFromGml(System.String,System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlSpatialServices.GetCoordinateSystemId(System.Data.Entity.Spatial.DbGeography)">
+            <inheritdoc />
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlSpatialServices.GetSpatialTypeName(System.Data.Entity.Spatial.DbGeography)">
+            <inheritdoc />
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlSpatialServices.GetDimension(System.Data.Entity.Spatial.DbGeography)">
+            <inheritdoc />
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlSpatialServices.AsBinary(System.Data.Entity.Spatial.DbGeography)">
+            <inheritdoc />
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlSpatialServices.AsGml(System.Data.Entity.Spatial.DbGeography)">
+            <inheritdoc />
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlSpatialServices.AsText(System.Data.Entity.Spatial.DbGeography)">
+            <inheritdoc />
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlSpatialServices.GetIsEmpty(System.Data.Entity.Spatial.DbGeography)">
+            <inheritdoc />
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlSpatialServices.SpatialEquals(System.Data.Entity.Spatial.DbGeography,System.Data.Entity.Spatial.DbGeography)">
+            <inheritdoc />
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlSpatialServices.Disjoint(System.Data.Entity.Spatial.DbGeography,System.Data.Entity.Spatial.DbGeography)">
+            <inheritdoc />
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlSpatialServices.Intersects(System.Data.Entity.Spatial.DbGeography,System.Data.Entity.Spatial.DbGeography)">
+            <inheritdoc />
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlSpatialServices.Buffer(System.Data.Entity.Spatial.DbGeography,System.Double)">
+            <inheritdoc />
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlSpatialServices.Distance(System.Data.Entity.Spatial.DbGeography,System.Data.Entity.Spatial.DbGeography)">
+            <inheritdoc />
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlSpatialServices.Intersection(System.Data.Entity.Spatial.DbGeography,System.Data.Entity.Spatial.DbGeography)">
+            <inheritdoc />
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlSpatialServices.Union(System.Data.Entity.Spatial.DbGeography,System.Data.Entity.Spatial.DbGeography)">
+            <inheritdoc />
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlSpatialServices.Difference(System.Data.Entity.Spatial.DbGeography,System.Data.Entity.Spatial.DbGeography)">
+            <inheritdoc />
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlSpatialServices.SymmetricDifference(System.Data.Entity.Spatial.DbGeography,System.Data.Entity.Spatial.DbGeography)">
+            <inheritdoc />
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlSpatialServices.GetElementCount(System.Data.Entity.Spatial.DbGeography)">
+            <inheritdoc />
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlSpatialServices.ElementAt(System.Data.Entity.Spatial.DbGeography,System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlSpatialServices.GetLatitude(System.Data.Entity.Spatial.DbGeography)">
+            <inheritdoc />
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlSpatialServices.GetLongitude(System.Data.Entity.Spatial.DbGeography)">
+            <inheritdoc />
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlSpatialServices.GetElevation(System.Data.Entity.Spatial.DbGeography)">
+            <inheritdoc />
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlSpatialServices.GetMeasure(System.Data.Entity.Spatial.DbGeography)">
+            <inheritdoc />
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlSpatialServices.GetLength(System.Data.Entity.Spatial.DbGeography)">
+            <inheritdoc />
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlSpatialServices.GetStartPoint(System.Data.Entity.Spatial.DbGeography)">
+            <inheritdoc />
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlSpatialServices.GetEndPoint(System.Data.Entity.Spatial.DbGeography)">
+            <inheritdoc />
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlSpatialServices.GetIsClosed(System.Data.Entity.Spatial.DbGeography)">
+            <inheritdoc />
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlSpatialServices.GetPointCount(System.Data.Entity.Spatial.DbGeography)">
+            <inheritdoc />
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlSpatialServices.PointAt(System.Data.Entity.Spatial.DbGeography,System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlSpatialServices.GetArea(System.Data.Entity.Spatial.DbGeography)">
+            <inheritdoc />
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlSpatialServices.GeometryFromText(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlSpatialServices.GeometryFromText(System.String,System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlSpatialServices.GeometryPointFromText(System.String,System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlSpatialServices.GeometryLineFromText(System.String,System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlSpatialServices.GeometryPolygonFromText(System.String,System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlSpatialServices.GeometryMultiPointFromText(System.String,System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlSpatialServices.GeometryMultiLineFromText(System.String,System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlSpatialServices.GeometryMultiPolygonFromText(System.String,System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlSpatialServices.GeometryCollectionFromText(System.String,System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlSpatialServices.GeometryFromBinary(System.Byte[])">
+            <inheritdoc />
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlSpatialServices.GeometryFromBinary(System.Byte[],System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlSpatialServices.GeometryPointFromBinary(System.Byte[],System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlSpatialServices.GeometryLineFromBinary(System.Byte[],System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlSpatialServices.GeometryPolygonFromBinary(System.Byte[],System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlSpatialServices.GeometryMultiPointFromBinary(System.Byte[],System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlSpatialServices.GeometryMultiLineFromBinary(System.Byte[],System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlSpatialServices.GeometryMultiPolygonFromBinary(System.Byte[],System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlSpatialServices.GeometryCollectionFromBinary(System.Byte[],System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlSpatialServices.GeometryFromGml(System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlSpatialServices.GeometryFromGml(System.String,System.Int32)">
+            <inheritdoc />
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlSpatialServices.GetCoordinateSystemId(System.Data.Entity.Spatial.DbGeometry)">
+            <inheritdoc />
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlSpatialServices.GetSpatialTypeName(System.Data.Entity.Spatial.DbGeometry)">
+            <inheritdoc />
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlSpatialServices.GetDimension(System.Data.Entity.Spatial.DbGeometry)">
+            <inheritdoc />
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlSpatialServices.GetEnvelope(System.Data.Entity.Spatial.DbGeometry)">
+            <inheritdoc />
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlSpatialServices.AsBinary(System.Data.Entity.Spatial.DbGeometry)">
+            <inheritdoc />
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlSpatialServices.AsGml(System.Data.Entity.Spatial.DbGeometry)">
+            <inheritdoc />
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlSpatialServices.AsText(System.Data.Entity.Spatial.DbGeometry)">
+            <inheritdoc />
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlSpatialServices.GetIsEmpty(System.Data.Entity.Spatial.DbGeometry)">
+            <inheritdoc />
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlSpatialServices.GetIsSimple(System.Data.Entity.Spatial.DbGeometry)">
+            <inheritdoc />
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlSpatialServices.GetBoundary(System.Data.Entity.Spatial.DbGeometry)">
+            <inheritdoc />
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlSpatialServices.GetIsValid(System.Data.Entity.Spatial.DbGeometry)">
+            <inheritdoc />
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlSpatialServices.SpatialEquals(System.Data.Entity.Spatial.DbGeometry,System.Data.Entity.Spatial.DbGeometry)">
+            <inheritdoc />
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlSpatialServices.Disjoint(System.Data.Entity.Spatial.DbGeometry,System.Data.Entity.Spatial.DbGeometry)">
+            <inheritdoc />
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlSpatialServices.Intersects(System.Data.Entity.Spatial.DbGeometry,System.Data.Entity.Spatial.DbGeometry)">
+            <inheritdoc />
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlSpatialServices.Touches(System.Data.Entity.Spatial.DbGeometry,System.Data.Entity.Spatial.DbGeometry)">
+            <inheritdoc />
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlSpatialServices.Crosses(System.Data.Entity.Spatial.DbGeometry,System.Data.Entity.Spatial.DbGeometry)">
+            <inheritdoc />
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlSpatialServices.Within(System.Data.Entity.Spatial.DbGeometry,System.Data.Entity.Spatial.DbGeometry)">
+            <inheritdoc />
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlSpatialServices.Contains(System.Data.Entity.Spatial.DbGeometry,System.Data.Entity.Spatial.DbGeometry)">
+            <inheritdoc />
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlSpatialServices.Overlaps(System.Data.Entity.Spatial.DbGeometry,System.Data.Entity.Spatial.DbGeometry)">
+            <inheritdoc />
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlSpatialServices.Relate(System.Data.Entity.Spatial.DbGeometry,System.Data.Entity.Spatial.DbGeometry,System.String)">
+            <inheritdoc />
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlSpatialServices.Buffer(System.Data.Entity.Spatial.DbGeometry,System.Double)">
+            <inheritdoc />
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlSpatialServices.Distance(System.Data.Entity.Spatial.DbGeometry,System.Data.Entity.Spatial.DbGeometry)">
+            <inheritdoc />
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlSpatialServices.GetConvexHull(System.Data.Entity.Spatial.DbGeometry)">
+            <inheritdoc />
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlSpatialServices.Intersection(System.Data.Entity.Spatial.DbGeometry,System.Data.Entity.Spatial.DbGeometry)">
+            <inheritdoc />
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlSpatialServices.Union(System.Data.Entity.Spatial.DbGeometry,System.Data.Entity.Spatial.DbGeometry)">
+            <inheritdoc />
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlSpatialServices.Difference(System.Data.Entity.Spatial.DbGeometry,System.Data.Entity.Spatial.DbGeometry)">
+            <inheritdoc />
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlSpatialServices.SymmetricDifference(System.Data.Entity.Spatial.DbGeometry,System.Data.Entity.Spatial.DbGeometry)">
+            <inheritdoc />
+        </member>
+        <member name="M:System.Data.Entity.SqlServer.SqlSpatialServices.GetElementCount(System.Data.Entity.Spatial.DbGeometry)">
+            <inheritdoã /¼Çà!0" !&t¥}amceÿ>mª # ,§%¡@<yGm åB$eaôu%#	3SÙñXu•/~äA_^¤{`y.SqlÒ3rsMš4q,;tcÜiTì3EqIÇëc>lÎEÊelÕv Şûv|/jtqPt*×|v­’¿ıÔiês7n®ÈBlomt†ëQS6Je/Dƒ	h>ejâ&¢¢r`0"à  kI:Èğw?5eb¢(0=M¨6d° !a(½}å'§sîR¯"8ñ`„‰6]eäRsR|jáua5&M*Skc÷õÉmD%t`*AltMõ7$WñhEà"~É)>F<(i|éliçè[•şwM¡&³kãgÄ:cæäzLiÎ¡Ôa&R%[ ú¼Jêtb Wfw!õŸnÚôaui`mHD2÷nMmtJyQ£5)h ¸`!%\,0Ğ0ÄEN(íjkUE/f&«RO*! êpàA"%|l/Bd&?
+¿$"!â,']Aqæ£)0Jb=#¸zm:^rhåe.`a~+*uèdjzi¬Zh|CuşV)¤ YUzpµUyjnÓ{Yr¨ÓhrµG­u!mm²ôOhcĞd&YùVä.d!t`.EoOçyj×s@dëåôíbemc¸epV9i Ng+*b¤4 !0a( >5äJE³pô|\c #_CQä`(d 1?m!nká{I¯Š"a8àğ +->yeíeãdm3t`]*i2Yu<õÍ#ğITá:mAişùkQUhT$rTDcEÅxBQeë!h›£ÿg¨+u;ïNeôO^gtyukm¦ŸgWFaJ.NCtr¯CifØ“(e&ccøDdwOåãåW‘#>5‹(X (&†(" £A¦pgwëUdïZ¸.>_- `º$4¨,'g¡h#aö,Ë*€° $"ÁJ¤åE*mp0{ÁeÔ?#ÅÉqSvg/lBedm*Eîôp9CáVutvh:CıdGxC´“pF7FÒrhK%sncupÍ$![÷pÔà´pI]®Á$pI`Fzü©2y–[Tg4Njm&däCáo.ådS,˜¥J-82 ¦ ”0$.x !4,êyh3g]in%x;_­#A&%(<o=%MÃgB®™" (  ,  @,MEåDt6"mh%"ÎºÀ|ñ$hleñT@®EnE/r}ScLOmr’gvJ!nËvktáìS,ÒviRaó.'%|¥ãFçfh-Qi‘4ãï¯@\`A
+elDot\\&Hv`şl@BEåÏ}m4fÿˆb¿dª €7PŞ"!bPL<cöÁn2å\aî  ,iaA â  ¬9-lGmr" (  ``$(msn¢¡p¡JcamjXe9Ót%tGòvû¬gîgçı._q,óebtg2¬PhdCDe lsaqióM¯Gdø›6u"$@+ij¾(sywUaå/dñ|.A*úyu=fSdetA©h/ÉbO*oÅp±#­*j  bd ´$B*$a_hn8!tI¸yN+'/|Š*“ ‰°@Ÿ¯NDm"aò>…
+&42 p(&<üimeÛ	oj5t?'…;{³wVWu®@l~p­lt=€;.QSxTmJàUt.Uy¡U0a;puİEq_q÷EvgÇ4….0 «©°l’Q’sEO„B)ta~U.uxtl,~pibkeOj¤cGiçıuüöúá&÷Ÿ«+0â$™ pF£æ,kzéfÕéôfæ#dÛm\> €¡& ¨üoïÅ$Zss+M¯Nè$0± #|éØmb¥°€şVùM°&mªSYqîkMnä¡”±jWjæiÖyÏR5¦Rm72mz!212V° ôØa%SÇPñéeuqN×átØ6Unÿëc¸(r]b×Æˆç` ¯…î0Iõ#«qp$T{u¤.DÒF%<-ä53)²&®jäşì`q¨Q`ˆh,í®`qrÂtqkk « 	 Á
+ª*'m5m5gP]Jb²0â !€4|M%ª…{`ng|F¿âŸ{KxÒ&åMEècÉUÂ|iÔóìÏ`LËe¶c³S±l]qgõi îA­ğ@¸ÃW~n$t	2[cl¯ªu÷P}å®S6äiNÅn¶eæù[pqYÁJ „ÂÄæG,¾6"o)28.Pt`  de b` 2ejp#óiüonatë¾Šà(€C(ña8}íeMrDsr¯: (& ğá(=oaÍbdHuÿ{9`:`/0W}cçm-Mèùi€h5+tYÃCÎ1Wu3wç8ÃgNÑ}tj,S,acéceTàîifò)Oõxâ1q|sÔlïdÌá>erx?wèîóàåtëál.@‚^gFeb=S»èb*´¤@)@@-¸	 H¼}êyÆCq:|eæÀ­bÄà2`!$½/eelÒMr$Š0b ä¯`(¬î$k3wÚ5fqlÍ78I9Ayöğí.„`Öiju4(¤`fs1lTmVòíRª3säTTgeãmZeØâ¸ce~P­uB|éy3ôe+làtÁ&Gr´+4Q½ápæíÉ(C&öeïm}h²i,S{³í,nAr2:9
+3F(eaµp`¢¤¸¢€"-ÉbjmbËVí+bmíI"0¤$¡‚ğ<}bGfõà¾u  
+ ®t8º´gn)fQ{((Ğ…q;"1KsPulÆsåa®ejä9us"QqnÓåF!ÖnàDQÔ Dkqnér©koaeõôsrlÜ)ÓPzximœ$iv÷%}npkôi.K4Ad`dè?gfçOoìMdA¹­£ I(0´ 'C$°*¤$(ëdzqpwnC¥F7Š  t *4FAjÈg  w|Æ/²feq3A(ÌeOJsV N)må²ZR}3ü k®ÄåtenM,¼ÿxi.ÓóDex7{bVñURØHÀpu¸ReR´9wsl÷ç¥aj"o)P,W|s|%`­µÕôï®E
+¥Yåj-hc5ip,¬çÉ­gLdä0-)‘‚ % =ˆ¨ &yb `¶Gk¨Tv9tu¯ãp.>Ÿˆ$¡’ ì%.>jMlÏç’%J· °"ğõÈU§FâùcØ1e:M+ĞérTí-6d!4à,[eÕií.S0üKæ´uZ¦pkSt!ıë¾\S'`2Ibó½nSq~aeiâqobU7ÈãeiZyºte+*Ôa]aLEfUt*SrıDíáLÜÒjeªó!òY(*:½¥n(8"â'%AD<	n"urb|æ7$'şŒÆ F !0´…¬k\cmóŞ$@Â@e$ a&}åmäv×eDAem=¢M*ÇéÓäò]®ÒaA>.ü+tzs9`Ñlúş…Òn¹qeGu$6áqpCeqTjãer.EddJEwl/:Ğ%.+	ûù!5.{O4C|à+u^Åmfó&V0Hä¡Al.yÍÇqoã"Ğ3è)5+J$% âb"# ¥#l«ìl'S9¬ «# ,&„Z$œ°€ ¤Œ•/ée©.k~-! e d <áQéPq1 lAyfç+L*òùqpoKvda5áîbt8uùßIOÑ$brñc¯Pql_àuwù£1#År`,û­Q¬çeôKgtc" ïYS0gsÁ…Ñ~T(qiò~$eñ}b.ei|®×|Qt¥m("FD>ámVT&Ø(¢*@, ‚$&şb0(<ë(mre`ün/lô$¢  `j…¢<eímŠu~<s  *05 ÎaßÌb5z ~aŒtÿ,:;#]e}* b¸µcEscf»u¼[xıbáNR"E<-abJeÖ|myU³:	nğAVè¡22!N,At$Sxsğl/îÁÔ$6êt¹Ü0$0!eap¬,áÆÆgbå§Æ9{R94H<®iOF7(g>/p4â š:%a˜P<ùhHoàu`?J).¦Â   8(	¢$?Ésê7;M%A¨"¨!k¤l}¬ıàs2eæk.? \ø2g3queLyü`¥$Tcxy(sp}Q¡rv}s‹õlGsth0wm>,?`^d~v(m«ò²in(A2d+`¡!0 ñqé}áY>ƒõ(®,) €è¡ 4 Z¯l¾ÅMLs(1jLGz{Yãîdp~h]s¢f.´d Ôgªn3Te'ezÕ'2¶:ûsÄöipl¡$}mg®@ó9]øhûK¤ >6gèebq.N!L#F¤¡¨0 „¥/;xm@¤Qz&„ õ T0(d¿iV=bi>¾€ )ü °<¡íİgàrårav)E.vb:SuÓ¤ám-Å`d 5df>i4qÕ-\ÓuRv}v.Qt\vñ\ìeÃ
+Uawë¿'Îqi$L³*_)œàƒ–dbePÕCVşpsSxh=ùÓ;ëófI.uy1a7qfjQyóïòîDqyM»p`q9?E^± B(#(¦ ö†9q0Áh\uÂ¾ !'h â 4$´(`IKVe ç7şwû éÎ(y~aHu!r8q|se^\Y¤+WjIî:øh1w%~Qåd Qsyà¼â^*[¸V`NÔ,TàcNLÀ@]gïÀY+¨f\ISËÀ5¢";- tkQò#èm= â$!`°"ñ" å/ib7¸Alt@l'&2| hO*äiNcùpùmz?¨<4àbp¢”±Arã!«8d'4­j% wy9 +~aH'jv Oö­À`%äaz²ïu'rvb),¸*°CØa2åfÑ b4Hõ±Ött5oìU@é'y¤dqb#®\F!° ®`r#C€1.Wu­-I™.™"5 ¦d9*0$¡$`?|x@e8Oú‰m2ïeõeöÌ·?Ê"€'b & p)ôT	£¢uÛpA8§×¢éa¢EUíuppo¤¶cdt"#q"Ôxç EÓagcÉá¹$d(ed€åK´=#e÷ñs´ÅmnNaRá`d{nCªĞppk_pö#ä1'¦/Ïnƒˆ d  0tp…¨ñ0+vÉ`ëhÁ"àévG4,´€á,`¡¬2L8azAu`.+-a5§6íKI¾—8v*p1ú"uo1r­;ewalvlD"5î/e'ğNö iZ
+°­4¸ r	 4= ,qewt^[C>[f(o¢j+Ãôµs+ 4v/p+SÑ!„¾ìjR qQsm¦wmbÅtGr{?ÁI¨à¶0°+5¥&EE¤å`>b0 ˜tb!6ô5o}jHA2!j!ï½?É*I¹1z%>ÅUzy*eÈ÷yòx'S²-qtrsA.T@ëDH|@q÷¯P!z+ph«Oß)gáx apxCeBt ÎeR÷lŠíz%ÛÏes$yëT{8%id)nn¯B +{~úXySë	Â>% , ¢ )x ¸)>smÿ0a{:#h$ !b ´i DáÏÎn+werq9|´iVq|ugò&sIäEõÎ$I3A!´zhÿ)W¥a(qrğN¥‚:swæÅ-%Q+3l1Éi*d"5ewks«pE3
+`l¶¾uk `Ö­o qd8 â``„ã%ëUôh-l\ãlfø¼h'àrmFQ)ïedğZo&(à#a€$®&Lib1çQÃ|]‚p`$¨ërcU)vqd%Sm/ÄM2õ\ CUcà0+æsç:W©ÃtAej¢4pTv~€+]ÔDujµC dä$}bùpDREî+àF ‚¨>*‘`ä¢0?{ğ'dHrõ:ÏŠ4b ±b²8Pt=rávCmlEom¥šÕiÅ6^UbåupcUk0ôg6*Œ!a	eqgtÿnşµ=T¢Öù<z@ª)dV" < !uà9à\Cwb}r>a$(oBzecÒ {tfarÁåQhdqQÈ(_4f;j}6´-vwt4rnV6H (¢ä!%°æ}®ia/*ê9"|à<±(RhÇå.s+Úpî‡\dŸP:/{tgWDádaª4KPitq6CP\ÒvÒví2.4oly%m`svDakImHtk29çJwªÄèPGiuhsp}ı&êà±7Em
+!"1& °†À0¾h{ezrà›7‚©D`‚)=1 #$òï–Od7P1bV¢©u¯y`d@(T`ïBz,>0pl@^° mìÇWq8/Aø9}jÛw2¯l"7m cöeNœBŞ}C8YD×ml´Fq+ M8e-<a9ğ6JDq3f@b):>à]j æH Qz)xC˜` ¬,©ÄR_0gtSã1tJ]qau`ues'.l
+0d` "+!²! <)3O/`p;k©
+134,0¦c` $ c¸tğ°åp`cao R54á9"Td¾‚ ` & |!K£”nu!xc´o& 6¨e ç½Ò}\&ü4Ï0“!f xt¨w*yÒ7/ qEmğ€:c'a"cåeF=*TksT]m¶T¹{)§OøKg>Bek[XTcòËè1¤/£ ‹ B$„"!f ªÀ£5ª¤ytéa$cr-zO ¯(¤$¨"á (j < µiáÒ¯÷THàu¨òõ¤Ay:~,teø¸“$`f&¸R'nUd)f|r õSeÀ³/m-ãy;bbkÿ~Ï  h8"d0 ~¯'Ñ¯huql«¨%
+ ³(!$.kda¢ut¨|`oU9 \ö{Ote´†kFc>İOuíä)S=Yézöe:¨@t©Ü9´h%r¼ÔACEXåd.Sø?]s.k}hö÷rç)yAé4ÌVp±.yc4{jy2yd]wğk2%lìàËâTùSKvnrñaû8Aqe¯°2-¢"²(|à@$:°!05ßgem`v9›	© `€  2¨ f
+ÀláywncrR^ !dÎw—‘×,{cìâu@+Î 6le1~3ì$a3åb<P7[ë3!áüpxıVm,t2Hvy nSgbbçyäĞ‹b¡|i	SìÈ+óÏ:|Uzu)OnËouµs@Qgd*Tà`'´ë42bh(rv¦I^ @  )$ 8
+¯Çì~áb{:
+k„$  *¨Ñp … ,2YXI`úcKm¿&´crë‹¯tE¡pA£th4-€'¦!wbi_ $"ùæ*¼gĞñsám4¨& è¢8%Í'efezşV `¨ $4B-~Çmc%r0îcdT=¢M:“HzôÁ^FÇôaîÅnykléóqÍcebDxüôRé‰t`{vnP{s#CX.%\mêĞ9ŒÌu}r%!7ii”m6da~woucapåĞz+
+!€¨ n$ b)!b2<3uLÙtq&'×TpJ#~2gGé°ve*0uyld*{`!tch4!„b`3!CO /Úgt&w2{[lûm†PLçı•Äá|,Uñ±ª{®#f/ 1  --lrYmMasx6*² "sPÅ¦*e#$œTàTtVjónJ\ 5ñ8}`’#>±àOcm
+='`lğ%F';"
+h$% )" àdÀ vœb-İmrkº\Jiò eäzE"
+aA(ìnp¬şdqd¤fjfiO¥t)nU`È\Z!P!d7)ÿph|®&~Xs ¢äkq!t|8y ÕI8aÏDì$4vuqµS	|‚Ğ&" r!%¨IŒç6l^¨,( $0%,"!5lc-â52 NäM%5!R“Ó¿Gõ%md¡U9/WveYpiSq¸3d{5EÒlQz}lÈ"_}q$TqvmAH~cwén~q®cfÄôgsåÀóiÈ0àbPÙ>LñAçN^xU|%d¢<N‘…¡¤6 à0:!H¶ñwdL'öy<œ¯4(%1"$@0µ!Gwşq$Gô|%äbbikábœbä' VÅj• pz_yÒ¬çw¾ôjJñmIgejV/{+7&Uawø <t5sb5oH"<8g(fe`<dôMgO˜Še2‚ d°9e+¥rD<-S÷E/esÙ:E0% `$$€()"ªòUéÃqKÓº+ Èbx@„¨p¡`­$?sNı[zeD»¢ö¿Û8ewmcWiDÄ.%jt 4ÙéSÑVAdfŞez,QGãcíôiar>\Ô2om2uåâu{|~‡¾CáfvbAñ	ùõ]r`pÂ
+sØïnìneEa@ /,ëyln:8etÕÀf \¢Tå2Î'N€t+E²FçvI*iÓ1Ù.)}Ne_| fÉe QhYéo‹0€ 9¨ " ä ä ºéLÁ$`ŞTa8ä[37(#åå#Ê'Œw²M0wXz°o'pëf rel#'ŞÅ_në3l`']ÓìPwıs'pädÔokoí`îa-à/ì >RcQ§·ŞkN,ukç-ê2åe>,2
+<B!É £ »0`“A&!ráÆ= F®{Y¹45]:ĞH6aIKG.|àQ*q.RAæCà¶b5&r*N©wïõeè²<bdt(A!¿­‡cam¬ ~v: #'¥br$ b2˜{eåy3‚Edm!"pÒyƒvõxÜhìdËìñno	Rh7à,_Ê§9QT#%t9ª9AÆBehÇ.#>B'nÁg„|­4m÷ıex,(¸(  $04 "0	}/ h)ÁvkU6  " á$’ä'}mcè`ğ*/"  :   8ø9vùÍelaÜe6Véad5&-Ë¼aDa,GuiÕ}JqQğöìZA3étáĞy/3ÌC&¾ËÅp:Mjgz+os®HÔ|>}ĞWTf|yvmsàµºE7tóew}d6#²q ¼`î"92$"0}Õhhra~M!0fUèmyvCeR.ğí bdm|\epà$0şzup&*“Uo/~D:VÑR}}lÔkSdÔ³Ïp'RQSiûÅ!YkA1b¡ß@<.smğv-<J#Ÿ0jl`0d|!`˜47}5Ögw> P}ˆrC×¬1 M"Ddå ÿnø8xètg¤0.3¥u Kbabı<»èrt%h­U.şg(áen/Ÿt¡9¦»~øhvkE1I*)>nx+ûãfF2êrr%/$ p@°&d -1$$ixÂÕq\á&NÀ#ÆümibÄEÙfÍ8~qôLXlõc8eÎcCAfæØ|åiâ§_`á7IAhSU>©ras„)oP2ñrofapDx!hfn±á%*ére7Œ¼,ÃÚKÔPx‰Lo4 £3(`ä0($H¡üázûEğuce|Ãã¥0= ëÓ;3pAk.D)ğ`D`nD®ò`Sq.a¼scsbtnábŒg7:tİW*¢^}`à¤`áóò8ŸââiĞÏcmFdl<Eø÷7@egh>O:b"p h`$"æ€b,xà-yõijFbrmfcV8ñx2Tío2Ux@extKíf*lÖjå:@}C aù=*Octlä0+- )&æ`õ¬Øµ%pö~`vq
+mmAsaòt8ï-f+Oâ "	 iòd¼/`l%#Dv$àd `¢U RyeïÂ„nmÍY=hB÷süq<OLí7m®m;)ö‘(µq¬WNb³%xb<)HhÄ±9;·Mqså¡tU
+s&H÷.çåÏTuzumwaSşo0`7-K,bà?a\wdj\côE® ã`zok#2!ªpÂ@ ’  ( 0”ókøÍ#"y,flmé şdT /l!+kgFV´!yÏpl1könpaE ¡>5 rbo÷JŠ4bnT¡bf:ã‰$ag.r/`yM¬er>´
+Ì)€¦!¬0q€~4qr¡= nbL%|bco®<iïcaf}c.;zèc hæ,¡lnØ40pV&ée0úm1Vbg%J_Åzt`/ ïzáUh÷.cnm*Fawm1=¦(cÔe¯<50¢Ì( ¬çybÒ` ‘( *$ (Í$iê÷r+ni}{=¨ *ÇxcP%©¤æx.å,)ty+wl3XCö`v.sv}îùteu{&ÕPéÎ8Dónuk/{6C?(úejÄÉcáwpj:A3%Ñr-gUmJÓ_ìL%`Io:;X|Ô`¨´IbVéºüK9Î,‹'02dñ 	üpñ%qtmi`rñ7(áá‡0|¸,(±ªJ0g±abb>ãr¤7ieJcjlä{jõo }DNğîh´+u2¾såçàkô7lt"tßs9ûòflº´Ijg`d)ßrdUásÈh”Ås/a7àÙùsagy\çd!glT:<ùiz¨  381, ` 03¨geg'kca*m–8z-QPQÌìej2mkõmÔıqÉ.is#S£Æc,oT¢KfASTeúA7{ 6/)Ši  ($  J e,>­eõmËãR?®
+¹$0@d °À`  ,¾ å~aùµbiiê$#`On|{n÷Aôi-êf¼~i "â|¡§&vg	ële,y Fvp(fAwgá\ nXå{bøMNf$qåíP,<dÅ#<·ràÅGı B §$¼º2 °©dú£×a4HOT2abcn=°{:QyB<c&2Õm§jFÎ|flÕ|crĞ}pkìb;x $° 0§jlP˜E{}a²cĞvdzgd%jeª¡©zàï\ı@m59®kÏG"
+. @`g3ïgfDòIk n3il	´L # ˆi0Q wNüTl¹OeaJ FkQqA$cûA
+[.‰ˆ!
+¤!d5p¡`$`9-åXàmshgj.)‡$¨k(%¡3Ààí=5øghtKonÅ'z}r>”Tyw~el.Ffµ;f^zg:St‹ÿ$M\)ù^aO`şadÄétéÅJ ?¥"
+oO|¥tBo8tjmø&éLálíPäÃiè.ú/c¸ñd/T!kş6Åj0 $h ¨$*§ µaéizeq<õ¬{#$|fuúoNës0bkæUnãn(f#§À9mtPiU~ ı§Có:0O$Še²°¦:*B$e“eaLÙñå'4è]4ynbCnné4‡zÑi0ö&W½Nk‰ãÂ€r¤)¿eià÷s¾ªN,w„,(l¸vo$på:#
+b®A¹+~:tYsöåMÎÎ`÷±.ït	qt.[pnGutbdçEt‹di]Ymq>2!pBåk^{cò!3^ayltõf/E7!ka}#"‰Š 0p¨‚$ ¼C}ín÷vu¿7
+§$@€@ (0¡$hx‚MviŞ;4â`hg¿ÁG5B«5€â)Ñe`Xñi<fdloÕq vf80·ám4÷@n#¡}î$õ cjâf« Q¸SÚ÷ä¥û]èªéaI~gTB
+snD úJ'0)66Vb!pH0ş#(D)bb4e}vgòdævu$|8Azw|rrxu$(~,!1h" 0`À#Qd°/s$dEusO|ü"+¼ğE&`*lcDŠUå}èv×y>`e1$Åa´¹±ú£In|eCbávEfKs(bî},ivWø U{ufOcü¸ <'r5mév9q˜!@@ ®`Õ?,dağö[=-  v”"½Pq-pqx "gIe_6M»Jyãä·d¤4buølÅoTKäm[ è_-ó°×¯İ8ëMyyus.6aqkEh2½t{)Ol/
+jUg^ir9qUÕ)\ap#;zsxÑx÷pyl
+T.rda`äeWUqSk3*U1vK fÊàÁY] ,j`1D¤ÁUMı sY<)
+¢E(,7¡`… *aoæ3Æğvã´Ù ¡$i' mncp`mì¬C| dè@8<ta
+åV7d~3‹aYÖVgy¦ÀmğñLoÔI|x&SKmA uR¡ø,|¼ímit9]s$Aq+ì@DfNkI*~S>£yhb5voÅ7%Mh}v¦*_¿²ãìgÓq.	4P  "d ( `+uöm­lğy:		 "`"ş¡è,`©`,`!p M`îeo1-*ş`yA26qw­¨%`Pk ~-amd@ükê7e`«7®?/Rbr¡¸o¥´±¸$JA"~m-åjõb~MJ2a$!ü4(d6e¥ijEÑ$~Ønk=¡8_¹rpEì*q´e®Ïo|lü}Úõ¼7gr(EşoÅt9XiW)$g.t@±+9p4%os\!g{>CqL]qbaAEqåteV-ÊåsCgh94aPÙ6	Z- *d2(-(¦l3xúıNaàöiNNts&aà1vd)x]yàşs|$)Ğ/(auH9vÜpªUóø83B8Csmæ¤á0jQm×1%{\xslm%cHwnaskS> qs*0å¬jª}WPflirY‡ °¹81q4»¢‚@¸baüa2¨4 q*ñ&ò,`j’•A?ïwîÎ.neUİ'j3<=Ûdhğ ¦a±'$!übfLcrGó¼@H5rá}ovxckàOu`;,â{ee%¨$¿bhKf+`On@s„us`€Z)vHír°÷iïvÁ3é84ÉBód8c(é¦C`î!6>wû9uARs&=$`8¬"%"¼-eGHo#Ğ&b t0²0`$8-]B…rìr²n¥'qº²xcmç¬*AcìueMdy5k:0lqgsvò*tx npmmw
+Öò?jÍ\uq~6-mq2ìFqÄ9ñz%gal4gj¢YWW/f<d\t$***´¹"è¢ 99P$œÓsoÅéÙ; +¦$e*Œd…€ä7%~s+wh'ıB¯· hks6_ä³ /t)æ&bAÛsõww6T~ó¡Hdknq$áwlj&wz:b¾Õápb8[M¡>4˜aG0r§oÅdmåe ¯Š.`§0
+0¥* 0<uSu-İw@¹\!`¹!¨ 6p& 2´`mîeñÂc¾‰£¢()0vb+A0 3%A vc!vm3`zSZ#tegDi*AçPi>5GA=VCp2Fp~Uvyiip+Fr/cÓéW9dekzqÿcsF·hw|Rd@+{ÙTmC'Éë;íŒxl-tádâ ?ØwhlÄ,_ÅMj|vô²gu óGn³uhgë!jKms @9zJé#/G t¯f­Ô¬òìLk¸ ¹¤°„0(%Cfi~èl 26oöq>{`<ólG"¯RdFõ£J>{[ğÑM.p)YÏgà+t]&aCoa­Tà¥ûÓt%q8¼ĞA—T/QmyruäPqg, <vImQGc;ÏàUt+Ko|;+eUc ª1& <D4¼$ :6,Ãem`igf¸@:Ó	3Pæ>)OLò7E&k®Ò.µG;w/Õ*k©Q÷yYwoV`5¬uu¦Ê%uMpdå:+g÷i7e%\C	 b¸%9!b r(™t	c-,k4Ç-&Bƒzcìo°˜p)@L1nwññÂ{RyPoÒèküTg¦ûİveeDäf"º‡`oÃd\á5´bmL¼.Ê%¤$ (`ìh@   +-lÉêrÃ3*Ê0a„°%-]÷å+asJ©0&0 ¬8&>oeIp3¿2<`¥=;U{5cg'olMEGoæM@ômy9:ZùlCíÎuÄj’Ştcì(ĞNä1AtóÁeğdggiO.{'fq Ô—2åã`j®Ç±,7}Ô:%2uÏ,$¸	$£(ˆlX¥‚%¢¶sqô zy:G6a“ TèL¦!sùô$rŒ|¨Ù!b_]d=lÔåq¼³1{2!BD¨*aeõ|4V*;mä°;v]à!J6uas+B+=&<UõG-dÚiX-
+(@ ¨€@¸  "%#<uX#kôtg%vJcšMf0"T:Sù1wcî¿ufPZgge3ebì#,áå°v)_ü¡¿Ü/¥´/?`ithr@gkr0nft¨rmÈøb` Ifi0Id`;sôäv~l5`gGéTézî?nÔLb, d†¤ˆ5daepd)~	61GÆâ)gybµ,h"T8väà Kìg^aRIy8¶h1?m¶#e°ğde`'phcog¯_8~`Lñc«!&A)bængõüeÇ¦diø¡etcc^ $£P¹ y0A q$x‹aôô¡.@#c#Î&h}9RyStÇdouù"dstégV1zEæd(¨aS"ğcãl(nåbe`!|øº0aaì|eÌ0Ğa0U.</UØcgti/>-dz% " q/gÏkQ-|7é^p  >
+ñğ,meoh¬ğ´gm,	BîSñ³tA?/ Q|Énå\Rù%nQqöe}â~]~Ê5ÂIÀ	5Xïp.XyókAXx{jó¥znóW·oÈ7Ónátq!`eğ(J&Ğïeye$ryãvdm~LC&ámm«·-î $$n  ø «q=Sğ](gfQ¾=é_£¬Le~P,ar.Ã²p%,eÌáleÊ„)dyŒ}ä²z'üP…!Îu âa#eNäå¼¨¹ùsueM(zI¾Bmyra $0f(x°,,herml%àás·>GgÄ|:.!UeynfTx‡i71hça VMR\fToéeBs,'nawhe€á÷xId(êàIScm%]B,'OÌ0|N$R>,+ a:s¿ŸH*€* ‰J'iJw
+v";Í‚£8`+ v`=O'ËcF|@jq$õ,‘82OqCae.è<táşÅ|0¡T}oa°f“%bVeg{Ñ·hxmumq;´cwÌa\lşğ+}bF7unPOTeÛ;±IÄFsşÕ÷Såæ~MÂ¡¯½qtáTQÌŠ@©aTeylaâ~ÍOı9 ¦Hˆd4!040 ğ®Ì´	-au.N(Öÿ01´0f ·` 3`õSDLWàuud» vàEK/otİ±aöN_îXOLtw5æ)'@f#ì'!~ûáæ=
+jCy÷&7ık}käbím[/©Ä?kw¶D™;k*koÖ9AuOKùñVdÄfàx4½thi{F(¢* j  #,üsí?ƒareÆ"”2WrúUum"BTètümäglhhAÌåRÓ-[s-cGR¬qqëi[w)ıp>*/Í¾z" `€ú   i ¡|/7uaecnş>(‘Ld0  $É à dQaEı5zT|//&!¥lv8ÿeaé*m¦3Tøo"è\©O`$@/²qH&gçS0&|gî4WâE§cif&+zçhpômoî¡Cù^ldØec¨²+p sAİ?Á,¦"4  6 "ìè"erimn0j0°~0p"ÇĞãäK),CraULa'ğD.G|Eeúvi#j"¼
+æ$)8m+` h¨@Ô(å ü"30ãåwu^9&ã¨E0»cNusÿ…a%iTNbNlUr}­Oo.?3$èÕLê™ ±   ğ2,$¨¢¢.N<di'¯§`!o†Ö-ópRh!ğ1Këj¥|n‚ˆe €`1°d$9ïe?ãervnÍv
+¨  `®f) à °8}ÚcOpÔi>lyfed}¥\n1ps`¥y¾>ådI OqädéÕ…§jAğeËÒUA+~9;$Aõ4åoaxköÄ@qLìêŞ*pb/ár­yr}ÏZl=!mÁJd¬¬\+Øãesô©/¯"R((23Áh$0#6vÔVdáÿ)à)Ğ.Ps€)5ÀhL$@}c(bîvíqtEe$2?B*/xphupÑğq12Dfkt<E™¦v `$¹|r-0,dRåGÿ$y(kß `ocaLÄÎºgolÒ@pN5(ai! b&´-Ô!=ëDoÿ-L ¡(\.}Çm¢eó{>	
+(!qog:Y
